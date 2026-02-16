@@ -29,7 +29,7 @@ export default function AgroCaseStudy() {
                     </div>
 
                     <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-12">
-                        The ৳25 Lakhs <br /> <span className="text-gold">Recovery.</span>
+                        The ৳22 Lakhs <br /> <span className="text-gold">Recovery.</span>
                     </h1>
 
                     <div className="flex flex-col md:flex-row gap-12 items-start mb-16">

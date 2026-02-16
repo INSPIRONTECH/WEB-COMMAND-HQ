@@ -1,9 +1,11 @@
 # Upwork Profile Optimization Strategy
 
 ## Strategic Objective
+
 Align your Upwork profile with the "Institutional Authority" of `inspiron.tech`. We are moving away from "Freelancer" positioning to "Official Partner & Engineering Consultant."
 
 ## 1. Profile Title
+
 **Current Vibe:** Generalist / Bookkeeper
 **New Authority Vibe:**
 > **Manager.io Official Partner | ERP Engineer | Zero Error Protocol**
@@ -12,6 +14,7 @@ Align your Upwork profile with the "Institutional Authority" of `inspiron.tech`.
 > **Business Tech Consultant | Manager.io & Next.js ERP | Financial Audits**
 
 ## 2. Professional Overview (UPWORK SAFE - COPY & PASTE)
+
 *This text is formatted with your requested symbols and sanitized to avoid link errors.*
 
 -------------------------------------------------------------------------
@@ -133,10 +136,10 @@ PHASE 4: OPTIMIZATION (Ongoing)
 • Bangladesh Tax Law (NBR)
 • Export Documentation (ERQ, Form C)
 
-
 ---
 
 ## 5. Project Requirements (Client Onboarding Form)
+
 *Copy these questions into the "Requirements" tab of your Project Catalog setup.*
 
 **1. Institutional Identity Node**
@@ -156,6 +159,7 @@ PHASE 4: OPTIMIZATION (Ongoing)
 ---
 
 ## 6. Institutional FAQ (Deflecting Objections)
+
 *Add these to your Project Catalog "Frequently Asked Questions" to filter out low-budget clients.*
 
 **Q: Why is your "Starter" node more expensive than other bookkeepers?**
@@ -173,81 +177,88 @@ PHASE 4: OPTIMIZATION (Ongoing)
 ---
 
 ## 3. Portfolio Items
+
 *Create these as "Case Studies" in your Upwork Portfolio.*
 
 ### Project 1: STEP Group Industries (Manufacturing ERP)
-*   **Title:** Custom Next.js ERP for Footwear Manufacturing
-*   **Role:** Lead Engineer & Financial Architect
-*   **Description:** Designed and deployed a custom ERP solution for a major footwear component manufacturer.
-    *   **Challenge:** Fragmented production data and manual payroll for 500+ employees.
-    *   **Solution:** Built a Next.js application integrated with Manager.io for real-time production tracking and automated payroll.
-    *   **Result:** 100% visibility into COGS and zero-error payroll processing.
+
+* **Title:** Custom Next.js ERP for Footwear Manufacturing
+* **Role:** Lead Engineer & Financial Architect
+* **Description:** Designed and deployed a custom ERP solution for a major footwear component manufacturer.
+  * **Challenge:** Fragmented production data and manual payroll for 500+ employees.
+  * **Solution:** Built a Next.js application integrated with Manager.io for real-time production tracking and automated payroll.
+  * **Result:** 100% visibility into COGS and zero-error payroll processing.
 
 ### Project 2: Nobin Agro Farm (Aquaculture Audit)
-*   **Title:** Financial Logic Migration for High-Volume Aquaculture
-*   **Role:** Financial Auditor & System Implementer
-*   **Description:** Reconstructed 3 years of legacy data to identify capital leakage.
-    *   **Challenge:** Unverified cash transactions and inventory shrinkage.
-    *   **Solution:** Implemented the "0.1% Error Protocol" using Manager.io and custom sensor data validation.
-    *   **Result:** Recovered BDT 25 Lakhs in lost capital and established a verified financial baseline.
+
+* **Title:** Financial Logic Migration for High-Volume Aquaculture
+* **Role:** Financial Auditor & System Implementer
+* **Description:** Reconstructed 3 years of legacy data to identify capital leakage.
+  * **Challenge:** Unverified cash transactions and inventory shrinkage.
+  * **Solution:** Implemented the "0.1% Error Protocol" using Manager.io and custom sensor data validation.
+  * **Result:** Recovered BDT 22 Lakhs in lost capital and established a verified financial baseline.
 
 ---
 
 ## 4. Project Catalog (Pre-Packaged Projects)
+
 *Set these up in Upwork's "Project Catalog" to match your website tiers.*
 
 ### 🏛️ PROJECT 1: THE STARTER IMPLEMENTATION
+
 **Title:** Manager.io Institutional Setup & Chart of Accounts Architecture
 **Tier:** Starter
 **Price Recommendation:** $450 - $650
 **Delivery:** 5 Days
 
-*   **Project Overview:** I will build a high-precision architectural foundation for your business in Manager.io. This is not just data entry; it is an institutional setup designed for scalability and NBR compliance.
-*   **What You Get:**
-    *   Custom Institutional Chart of Accounts tailored to your industry.
-    *   Single Currency Optimization (BDT).
-    *   Setup of one Bank Account with automated import rules.
-    *   Branded Invoice Template with your company node details.
-    *   60-minute Technical Handover & Training session.
-*   **Steps to Completion:**
-    1.  **Discovery Node:** Reviewing your business model and existing ledger.
-    2.  **Architecture Design:** Building the Chart of Accounts and Tax Codes.
-    3.  **Institutional Deployment:** Final configuration and handover.
+* **Project Overview:** I will build a high-precision architectural foundation for your business in Manager.io. This is not just data entry; it is an institutional setup designed for scalability and NBR compliance.
+* **What You Get:**
+  * Custom Institutional Chart of Accounts tailored to your industry.
+  * Single Currency Optimization (BDT).
+  * Setup of one Bank Account with automated import rules.
+  * Branded Invoice Template with your company node details.
+  * 60-minute Technical Handover & Training session.
+* **Steps to Completion:**
+    1. **Discovery Node:** Reviewing your business model and existing ledger.
+    2. **Architecture Design:** Building the Chart of Accounts and Tax Codes.
+    3. **Institutional Deployment:** Final configuration and handover.
 
 ### 🏛️ PROJECT 2: THE PROFESSIONAL NODE
+
 **Title:** Manager.io Migration & Multi-Currency Automation Hub
 **Tier:** Professional
 **Price Recommendation:** $950 - $1,400
 **Delivery:** 10 Days
 
-*   **Project Overview:** I will migrate your legacy data (Excel, QuickBooks, or Tally) into a fully automated Manager.io ecosystem. This node is designed for multi-entity operations requiring deep visibility.
-*   **What You Get:**
-    *   Full Data Migration of up to 2 years of legacy records.
-    *   Multi-Currency Logic for Export/Import (BDT, USD, etc.).
-    *   Integration of up to 3 Bank Accounts with automated reconciliation.
-    *   Automation of Recurring Workflows for invoices and expenses.
-    *   Custom HTML/CSS Document Themes for a professional institutional look.
-*   **Steps to Completion:**
-    1.  **Sentry Audit:** Analyzing legacy data for integrity.
-    2.  **Transformation:** Mapping and migrating data to Manager.io.
-    3.  **Automation Layer:** Setting up multi-currency and bank sync logic.
-    4.  **Team Scaling:** Advanced training for up to 5 users.
+* **Project Overview:** I will migrate your legacy data (Excel, QuickBooks, or Tally) into a fully automated Manager.io ecosystem. This node is designed for multi-entity operations requiring deep visibility.
+* **What You Get:**
+  * Full Data Migration of up to 2 years of legacy records.
+  * Multi-Currency Logic for Export/Import (BDT, USD, etc.).
+  * Integration of up to 3 Bank Accounts with automated reconciliation.
+  * Automation of Recurring Workflows for invoices and expenses.
+  * Custom HTML/CSS Document Themes for a professional institutional look.
+* **Steps to Completion:**
+    1. **Sentry Audit:** Analyzing legacy data for integrity.
+    2. **Transformation:** Mapping and migrating data to Manager.io.
+    3. **Automation Layer:** Setting up multi-currency and bank sync logic.
+    4. **Team Scaling:** Advanced training for up to 5 users.
 
 ### 🏛️ PROJECT 3: THE ENTERPRISE TRANSFORMATION
+
 **Title:** Enterprise Manager.io ERP & GitHub CI/CD Reporting Node
 **Tier:** Enterprise
 **Price Recommendation:** $2,000+
 **Delivery:** 20 Days
 
-*   **Project Overview:** This is the **"0.1% Error Protocol"** for conglomerates and high-volume manufacturing. I integrate Manager.io with advanced technical assets to create a secure, audit-ready financial engine.
-*   **What You Get:**
-    *   Full ERP deployment with custom Manufacturing/Batch-Lease logic.
-    *   GitHub Actions Integration for automated CI/CD financial reporting.
-    *   Custom Next.js Financial Dashboard for "Mission Control" visibility.
-    *   Self-Hosted Manager.io Server deployment for absolute data sovereignty.
-    *   30-Day Critical Support Sentry for your transition period.
-*   **Steps to Completion:**
-    1.  **Deep Audit:** Full business process mapping and gap analysis.
-    2.  **Engineering:** Building the custom automation scripts and server node.
-    3.  **Deployment:** Live migration and technical stress-testing.
-    4.  **Operational Support:** 30 days of active monitoring and adjustments.
+* **Project Overview:** This is the **"0.1% Error Protocol"** for conglomerates and high-volume manufacturing. I integrate Manager.io with advanced technical assets to create a secure, audit-ready financial engine.
+* **What You Get:**
+  * Full ERP deployment with custom Manufacturing/Batch-Lease logic.
+  * GitHub Actions Integration for automated CI/CD financial reporting.
+  * Custom Next.js Financial Dashboard for "Mission Control" visibility.
+  * Self-Hosted Manager.io Server deployment for absolute data sovereignty.
+  * 30-Day Critical Support Sentry for your transition period.
+* **Steps to Completion:**
+    1. **Deep Audit:** Full business process mapping and gap analysis.
+    2. **Engineering:** Building the custom automation scripts and server node.
+    3. **Deployment:** Live migration and technical stress-testing.
+    4. **Operational Support:** 30 days of active monitoring and adjustments.

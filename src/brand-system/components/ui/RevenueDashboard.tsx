@@ -10,7 +10,7 @@ import { TrendingUp, ShieldCheck, Activity, Database } from 'lucide-react';
 const METRICS = [
     {
         label: 'Capital Leakage Recovered',
-        value: '৳25,40,000+',
+        value: '৳22,00,000+',
         sub: 'Verified: Multi-Site Enterprise',
         icon: TrendingUp,
         color: 'text-gold'
