@@ -12,12 +12,6 @@ export async function POST(request: Request) {
     try {
         const data = await request.json();
 
-        // Debug logging
-        console.log('DEBUG: API Key exists:', !!NOTION_API_KEY);
-        console.log('DEBUG: DB ID exists:', !!DATABASE_ID);
-        console.log('DEBUG: API Key length:', NOTION_API_KEY?.length);
-        console.log('DEBUG: DB ID:', DATABASE_ID);
-
         // 1. Save to Notion using standard fetch
         const notionResponse = await fetch('https://api.notion.com/v1/pages', {
             method: 'POST',
@@ -36,7 +30,20 @@ export async function POST(request: Request) {
                         rich_text: [{ text: { content: data.contactPerson || '' } }],
                     },
                     'Email': { email: data.email || null },
-                    'Phone': { phone_number: data.phone || null },
+                    'Phone': {
+                        phone_number: (() => {
+                            let p = data.phone || '';
+                            // Robust BD mobile validation: 01 followed by 3-9, plus 8 digits (total 11)
+                            if (p.match(/^01[3-9]\d{8}$/)) {
+                                return '+88' + p;
+                            }
+                            // Fallback: if starts with 01 but doesn't match strict regex, still try adding +88
+                            if (p.startsWith('01')) {
+                                return '+88' + p;
+                            }
+                            return p || null;
+                        })()
+                    },
                     'Received Support': {
                         select: { name: data.receivedSupport === 'yes' ? 'Yes' : data.receivedSupport === 'no' ? 'No' : 'Minimal' },
                     },
@@ -65,8 +72,7 @@ export async function POST(request: Request) {
 
         if (!notionResponse.ok) {
             const errorText = await notionResponse.text();
-            // Return debug info in the error message so the user can see it in the client
-            throw new Error(`Notion API Error: ${errorText} || DEBUG: KeyLength=${NOTION_API_KEY?.length}, DB_ID=${DATABASE_ID}`);
+            throw new Error(`Notion API Error: ${errorText}`);
         }
 
         const notionData = await notionResponse.json();
@@ -85,19 +91,28 @@ ${data.customizationRequirements?.substring(0, 150) || ''}
     `.trim();
 
         if (WHATSAPP_TOKEN && WHATSAPP_TOKEN !== 'your_access_token_here') {
-            await fetch(WHATSAPP_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${WHATSAPP_TOKEN}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    messaging_product: 'whatsapp',
-                    to: YOUR_PHONE,
-                    type: 'text',
-                    text: { body: message },
-                }),
-            });
+            try {
+                const whatsappRes = await fetch(WHATSAPP_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${WHATSAPP_TOKEN}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        messaging_product: 'whatsapp',
+                        to: YOUR_PHONE,
+                        type: 'text',
+                        text: { body: message },
+                    }),
+                });
+
+                if (!whatsappRes.ok) {
+                    console.error('WhatsApp notification failed:', await whatsappRes.text());
+                }
+            } catch (whatsappError) {
+                console.error('WhatsApp notification error:', whatsappError);
+                // Don't fail the whole request if just WhatsApp fails
+            }
         }
 
         return NextResponse.json({ success: true, notionPageId: notionData.id });
