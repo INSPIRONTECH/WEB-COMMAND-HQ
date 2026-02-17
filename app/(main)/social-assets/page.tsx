@@ -124,7 +124,7 @@ export default function SocialAssetsPage() {
                                     Bangladesh
                                 </div>
                                 <div className="text-slate-400 text-xs font-mono pt-2">
-                                    EST. 2011 // 50+ IMPLEMENTATIONS
+                                    EST. 2025 // 50+ IMPLEMENTATIONS
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@ export default function SocialAssetsPage() {
                             <div className="text-[#00D2FF] font-mono text-xs flex gap-4">
                                 <span>DHAKA, BANGLADESH</span>
                                 <span>//</span>
-                                <span>EST. 2011</span>
+                                <span>EST. 2025</span>
                             </div>
                         </div>
                     </div>
