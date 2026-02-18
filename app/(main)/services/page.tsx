@@ -1,178 +1,146 @@
-/**
- * SERVICES PAGE — INSPIRON TECH
- * What we actually do. Plain language. No pricing here — that lives on /pricing.
- */
-
-import React from 'react';
-import {
-    CheckCircle2, ShieldCheck,
-    ArrowRight, MessageSquareCode, Users, Database, BarChart3
-} from 'lucide-react';
+import { Building2, Users, HeadphonesIcon, MessageSquareCode, Cloud, FileSpreadsheet, FileBarChart, GraduationCap, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-
-const SERVICES = [
-    {
-        icon: Database,
-        title: "Manager.io Setup & Migration",
-        desc: "We set up Manager.io from scratch or migrate your existing data from Excel, Tally, or other systems. Clean chart of accounts, bank integrations, invoice templates — everything configured for your business.",
-        deliverables: [
-            "Custom Chart of Accounts for your industry",
-            "Data migration from your existing system",
-            "Bank account integration and reconciliation",
-            "Professional invoice and receipt templates",
-            "Bangladesh VAT Act 2012 compliance"
-        ]
-    },
-    {
-        icon: BarChart3,
-        title: "Custom Dashboards & Reporting",
-        desc: "Need to see your business data in real-time? We build custom financial dashboards that pull directly from Manager.io, giving you the visibility you need to make decisions.",
-        deliverables: [
-            "Real-time financial dashboards (Next.js)",
-            "Custom report templates",
-            "Production tracking and batch management",
-            "Multi-currency support (BDT/USD/AUD)",
-            "Automated recurring workflows"
-        ]
-    },
-    {
-        icon: Users,
-        title: "Training & Ongoing Support",
-        desc: "We don't just set it up and leave. We train your team properly and stay available for whenever you need help. Call us anytime.",
-        deliverables: [
-            "One-on-one training for your staff",
-            "Team training (up to 5 users per session)",
-            "Post-delivery support (30–60 days included)",
-            "Ongoing phone/WhatsApp support",
-            "System updates and optimization"
-        ]
-    }
-];
 
 export default function ServicesPage() {
     return (
         <div className="min-h-screen bg-deep-navy-black text-institutional-white selection:bg-electric-cyan selection:text-deep-navy-black">
-
-            {/* PAGE HEADER */}
-            <section className="py-24 px-10 relative overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-electric-cyan/5 via-transparent to-transparent -z-10" />
-                <div className="max-w-5xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-3 bg-electric-cyan/10 border border-electric-cyan/20 px-6 py-2 rounded-full mb-10">
-                        <ShieldCheck size={14} className="text-electric-cyan" />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-electric-cyan">Official Manager.io Partner</span>
-                    </div>
-                    <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
-                        Our <span className="text-electric-cyan">Services</span>
-                    </h1>
-                    <p className="max-w-2xl mx-auto text-xl text-gray-400 leading-relaxed font-light">
-                        We listen first, then build exactly what your business needs. No jargon, no surprises.
-                    </p>
+            {/* Hero */}
+            <section className="py-32 px-8 text-center border-b border-white/5">
+                <h1 className="font-institutional text-4xl md:text-6xl font-medium uppercase tracking-tight mb-6">
+                    Manager.io Services
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                    MD ABU HASAN architects your workflow. Cloud/Server deployment, custom COA, migrations, NBR/VAT, dashboards, training.
+                </p>
+                <div className="flex flex-col md:flex-row justify-center gap-6">
+                    <a href="/build-your-workflow"
+                        className="inline-flex items-center gap-3 gold-racer haptic-button px-12 py-6 rounded-2xl uppercase tracking-widest text-sm shadow-2xl justify-center">
+                        <MessageSquareCode size={22} /> Architect My Workflow
+                    </a>
                 </div>
             </section>
 
-            {/* HOW WE WORK */}
-            <section className="py-16 px-10 bg-white/[0.02] border-y border-white/5">
+            {/* 6 Core Services */}
+            <section className="py-24 px-8">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="font-institutional text-3xl md:text-5xl font-medium text-center uppercase tracking-tight mb-16">Core Services</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: Cloud, title: 'Cloud/Server Deployment', desc: 'Unlimited users/businesses. NBR-compliant Mushak 6.3. Mobile access. Self-hosted or Cloud Edition.' },
+                            { icon: Users, title: 'COA + Workflow Design', desc: '10-20hr discovery. Custom chart of accounts. Bangladesh business logic mapping for complex entities.' },
+                            { icon: FileSpreadsheet, title: 'Tally/Excel Migration', desc: 'Zero data loss (500+ migrations). Parallel run + validation. Move from legacy systems to Manager.io.' },
+                            { icon: ShieldCheck, title: 'NBR/VAT Automation', desc: 'Mushak 6.3/9.1 forms. Multi-currency exports. Audit-ready reporting built into your workflow.' },
+                            { icon: FileBarChart, title: 'Custom Dashboards', desc: 'ANY data visualized. Real-time KPIs. Next.js/Vercel integrations for advanced analytics.' },
+                            { icon: GraduationCap, title: 'Bilingual Training', desc: 'Bengali/English. Foundation/Pro/Expert levels. Your team becomes self-sufficient in 2 weeks.' }
+                        ].map(({ icon: Icon, title, desc }, i) => (
+                            <div key={i} className="p-10 bg-white/5 border border-white/10 rounded-[40px] hover:border-action-gold/50 group transition-all duration-300">
+                                <div className="text-electric-cyan mb-6 group-hover:scale-110 transition duration-300">
+                                    <Icon size={48} strokeWidth={1.5} />
+                                </div>
+                                <h3 className="font-institutional text-2xl font-bold uppercase mb-4 text-white group-hover:text-action-gold transition-colors">{title}</h3>
+                                <p className="text-gray-400 leading-relaxed font-light text-sm">{desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* WORKFLOW COMPLEXITY - The Unique Selling Point */}
+            <section className="py-24 px-8 bg-white/[0.02] border-y border-white/5">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="text-2xl font-black uppercase tracking-widest mb-12 text-center">How We Work</h2>
-                    <div className="grid md:grid-cols-4 gap-8">
-                        <div className="text-center">
-                            <div className="w-12 h-12 rounded-full bg-action-gold/20 flex items-center justify-center mx-auto mb-4">
-                                <span className="text-action-gold font-black">1</span>
-                            </div>
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-2">Listen</h3>
-                            <p className="text-gray-500 text-sm">We spend hours understanding your business, staff, and real challenges.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-12 h-12 rounded-full bg-electric-cyan/20 flex items-center justify-center mx-auto mb-4">
-                                <span className="text-electric-cyan font-black">2</span>
-                            </div>
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-2">Design</h3>
-                            <p className="text-gray-500 text-sm">We map out the exact setup plan — what sequence, what logic, no gaps.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-12 h-12 rounded-full bg-action-gold/20 flex items-center justify-center mx-auto mb-4">
-                                <span className="text-action-gold font-black">3</span>
-                            </div>
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-2">Build</h3>
-                            <p className="text-gray-500 text-sm">Setup, customization, migration, training — everything delivered on time.</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-12 h-12 rounded-full bg-electric-cyan/20 flex items-center justify-center mx-auto mb-4">
-                                <span className="text-electric-cyan font-black">4</span>
-                            </div>
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-2">Support</h3>
-                            <p className="text-gray-500 text-sm">After delivery, we stay available. Call us whenever you need help.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SERVICE DESCRIPTIONS — No prices, just what we do */}
-            <section className="py-20 px-10">
-                <div className="max-w-5xl mx-auto space-y-12">
-                    {SERVICES.map((service, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white/[0.02] border border-white/10 rounded-3xl p-10 md:p-12 hover:border-electric-cyan/30 transition"
-                        >
-                            <div className="flex items-start gap-5 mb-6">
-                                <div className="w-12 h-12 rounded-xl bg-electric-cyan/10 flex items-center justify-center shrink-0">
-                                    <service.icon size={22} className="text-electric-cyan" />
+                    <h2 className="font-institutional text-3xl md:text-4xl font-medium text-center uppercase tracking-tight mb-12">
+                        What Makes Our Clients Complex
+                    </h2>
+                    <div className="space-y-6">
+                        {[
+                            { title: "GP/bKash Distributor (Progoti Agency)", desc: "1000s of daily micro-transactions, agent commissions, slim margins tracked per card across an entire division." },
+                            { title: "4-Company Footwear Group (STEP)", desc: "Internal supply chain where shoe lasts + adhesives are consumed in manufacturing, requiring inter-company billing and consolidated P&L." },
+                            { title: "1st Class Govt Contractor (BAUS)", desc: "Project-based job costing for eGP/LTM tenders, tracking retention billing, mobilization advances, and multi-site BOQ execution." },
+                            { title: "30-Pond Aquaculture", desc: "Batch profitability per pond, feed cost allocation, lease amortization, and mortality tracking." },
+                            { title: "IVD Medical Importer (HEALTHCARE INSPIRON)", desc: "Warranty/calibration service revenue, lot-controlled reagent inventory, and institutional credit billing." },
+                            { title: "Garments Trims & Labels (SML Subcontractors)", desc: "Job-order costing per buyer order (paper/ink/plates), wastage % tracking, per-job profitability, and consolidated billing to RMG buyers." }
+                        ].map((item, idx) => (
+                            <div key={idx} className="flex flex-col md:flex-row gap-4 md:items-start p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
+                                <div className="min-w-[40px] text-action-gold pt-1">
+                                    <MessageSquareCode size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-black uppercase tracking-tight">{service.title}</h3>
-                                    <p className="text-gray-400 font-light mt-2 leading-relaxed">{service.desc}</p>
+                                    <h3 className="font-bold text-lg text-electric-cyan mb-1">{item.title}</h3>
+                                    <p className="text-gray-300 font-light">{item.desc}</p>
                                 </div>
                             </div>
-                            <div className="grid md:grid-cols-2 gap-3 ml-0 md:ml-[68px]">
-                                {service.deliverables.map((item, i) => (
-                                    <div key={i} className="flex items-start gap-3">
-                                        <CheckCircle2 size={14} className="text-electric-cyan mt-1 shrink-0" />
-                                        <span className="text-sm text-gray-300">{item}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* GUARANTEE */}
-            <section className="py-20 px-10">
-                <div className="max-w-4xl mx-auto bg-action-gold/10 border border-action-gold/30 rounded-3xl p-12 text-center">
-                    <h3 className="font-institutional text-2xl font-bold text-action-gold uppercase mb-4">
-                        Our Promise
-                    </h3>
-                    <p className="text-gray-300 text-lg font-light leading-relaxed">
-                        If the final setup doesn&apos;t match what we agreed on, we fix it at no extra cost. Every delivery is verified against your requirements before handover.
+                        ))}
+                    </div>
+                    <p className="text-center text-gray-400 mt-12 text-lg italic">
+                        &ldquo;Others said it couldn&apos;t be done. We architected it anyway.&rdquo;
                     </p>
                 </div>
             </section>
 
-            {/* CTA TO PRICING */}
-            <section className="py-16 text-center border-t border-white/5">
-                <div className="flex flex-col items-center gap-6">
-                    <p className="text-gray-400 text-lg">Ready to see what it costs?</p>
-                    <Link
-                        href="/pricing"
-                        className="inline-flex items-center gap-3 bg-electric-cyan text-deep-navy-black px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm haptic-button hover:bg-electric-cyan/90 transition"
-                    >
-                        View Pricing <ArrowRight size={18} />
-                    </Link>
-                    <a
-                        href="https://wa.me/8801719300849?text=Hi, I'd like to discuss which Manager.io service is right for my business."
-                        className="inline-flex items-center gap-3 text-action-gold hover:text-electric-cyan transition text-sm font-bold uppercase tracking-widest mt-2"
-                    >
-                        <MessageSquareCode size={16} /> Or talk to us — it&apos;s free
-                    </a>
-                    <div className="flex gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mt-8">
-                        <Link href="/" className="hover:text-electric-cyan transition-colors">Home</Link>
-                        <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
-                        <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
-                        <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
+            {/* Pricing Teaser + CTA */}
+            <section className="py-20 px-8 bg-gradient-to-t from-electric-cyan/[0.05] to-transparent text-center">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="font-institutional text-3xl md:text-5xl uppercase tracking-tight mb-6">From BDT 15K/month</h2>
+                    <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto font-light">Standard/Premium/Enterprise. ROI in 6 months guaranteed.</p>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <Link href="/pricing" className="text-electric-cyan hover:text-white transition-colors uppercase tracking-widest text-sm font-bold border-b border-electric-cyan/30 hover:border-white pb-1">
+                            See Pricing Structure
+                        </Link>
+                        <a href="https://wa.me/8801719300849" className="gold-racer haptic-button px-12 py-6 rounded-2xl uppercase tracking-widest text-sm shadow-2xl">
+                            Start Project
+                        </a>
                     </div>
                 </div>
             </section>
+
+            {/* FOOTER - INLINE (Temporary until SharedFooter) */}
+            <footer className="py-16 border-t border-white/5 px-8 bg-deep-navy-black">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="text-center md:text-left">
+                            <p className="font-institutional text-gray-400 font-light">
+                                <span className="text-action-gold font-bold">MD ABU HASAN</span> · Founder & Chief Architect, INSPIRON TECH
+                            </p>
+                            <p className="text-gray-600 text-sm mt-1">
+                                Official Manager.io Partner · Dhaka 1217, Bangladesh
+                            </p>
+                        </div>
+
+                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                            <Link href="/services" className="hover:text-electric-cyan transition-colors">Services</Link>
+                            <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
+                            <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
+                            <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
+                            <Link href="/client-feedback" className="hover:text-electric-cyan transition-colors">Client Feedback</Link>
+                            <Link href="/privacy" className="hover:text-electric-cyan transition-colors">Privacy</Link>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <a
+                            href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-electric-cyan text-sm hover:underline"
+                        >
+                            Verify on Upwork ↗
+                        </a>
+                        <a href="https://forum.manager.io/u/abu_hasan"
+                            target="_blank"
+                            className="text-electric-cyan text-sm hover:underline">
+                            Active on Manager.io Forum ↗
+                        </a>
+                        <a
+                            href="https://www.manager.io/advisors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-action-gold text-sm hover:underline"
+                        >
+                            Verify on Manager.io ↗
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

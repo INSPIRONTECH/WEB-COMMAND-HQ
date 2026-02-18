@@ -1,193 +1,285 @@
-/**
- * PRICING PAGE — INSPIRON TECH
- * Transparent pricing. No vaporware products.
- */
-
 import React from 'react';
-import { Check, Shield, MessageSquareCode, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+    MessageSquareCode,
+    ShieldCheck,
+    Users,
+    Database,
+    BarChart3,
+    GraduationCap,
+    CheckCircle2,
+    XCircle,
+    ArrowRight,
+    Briefcase,
+    Clock,
+    Zap,
+    Factory,
+    Building2,
+    Truck,
+    Sprout,
+    Repeat,
+    TrendingUp
+} from 'lucide-react';
 
 export default function PricingPage() {
     return (
-        <div className="min-h-screen bg-deep-navy-black pt-32 pb-24 px-6">
-            {/* Page Header */}
-            <div className="max-w-7xl mx-auto text-center mb-20">
-                <div className="inline-flex items-center gap-2 bg-action-gold/10 border border-action-gold/30 px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest text-action-gold mb-8">
-                    <Shield size={14} />
-                    Fixed-Price Packages
-                </div>
+        <div className="min-h-screen bg-deep-navy-black text-institutional-white selection:bg-electric-cyan selection:text-deep-navy-black">
 
-                <h1 className="font-institutional text-5xl md:text-7xl font-medium text-institutional-white uppercase tracking-tighter leading-[0.9] mb-6">
-                    Transparent <span className="text-action-gold">Pricing</span>
-                </h1>
-
-                <p className="font-institutional text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
-                    No hourly billing. No scope creep. You know the price before we start.
-                </p>
-            </div>
-
-            {/* Pricing Grid */}
-            <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-                {/* Manager.io Starter */}
-                <div className="bg-white/5 border-2 border-action-gold/30 rounded-3xl p-10 hover:border-action-gold/50 transition-all group">
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="font-institutional text-2xl font-bold text-action-gold uppercase">Starter Setup</h3>
-                    </div>
-
-                    <div className="mb-8">
-                        <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-5xl font-black text-institutional-white">৳50,000</span>
-                        </div>
-                        <p className="text-gray-400 text-sm font-light flex items-center gap-2">
-                            <Clock size={12} /> 5-Day Delivery
-                        </p>
-                    </div>
-
-                    <ul className="space-y-4 mb-10">
-                        {[
-                            "Complete Chart of Accounts setup",
-                            "Manager.io Cloud deployment",
-                            "Staff training & documentation",
-                            "30-day post-delivery support",
-                            "Bangladesh VAT Act 2012 compliance"
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                                <Check className="text-action-gold flex-shrink-0 mt-1" size={18} />
-                                <span className="text-gray-300 text-sm">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <a
-                        href="https://wa.me/8801719300849?text=Inquiry: Manager.io Starter Setup - BDT 50,000"
-                        className="w-full flex items-center justify-center gap-2 bg-action-gold text-deep-navy-black px-6 py-4 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-action-gold/90 transition haptic-button"
-                    >
-                        <MessageSquareCode size={14} />
-                        Get Started
-                    </a>
-                </div>
-
-                {/* Full Implementation */}
-                <div className="bg-white/5 border-2 border-electric-cyan/30 rounded-3xl p-10 hover:border-electric-cyan/50 transition-all group relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-electric-cyan text-deep-navy-black px-4 py-1 text-[9px] font-black uppercase tracking-wider rounded-bl-xl">
-                        Most Popular
-                    </div>
-
-                    <div className="flex items-center justify-between mb-8 mt-6">
-                        <h3 className="font-institutional text-2xl font-bold text-electric-cyan uppercase">Full Implementation</h3>
-                    </div>
-
-                    <div className="mb-8">
-                        <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-5xl font-black text-institutional-white">৳100,000+</span>
-                        </div>
-                        <p className="text-gray-400 text-sm font-light flex items-center gap-2">
-                            <Clock size={12} /> 10-Day Delivery
-                        </p>
-                    </div>
-
-                    <ul className="space-y-4 mb-10">
-                        {[
-                            "Everything in Starter Setup",
-                            "Legacy data migration (Excel/Tally)",
-                            "Multi-currency support (BDT/USD/AUD)",
-                            "Automated recurring workflows",
-                            "Up to 3 bank reconciliations",
-                            "Team training for up to 5 users"
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                                <Check className="text-electric-cyan flex-shrink-0 mt-1" size={18} />
-                                <span className="text-gray-300 text-sm">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <a
-                        href="https://wa.me/8801719300849?text=Inquiry: Full Manager.io Implementation"
-                        className="w-full flex items-center justify-center gap-2 bg-electric-cyan text-deep-navy-black px-6 py-4 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-electric-cyan/90 transition haptic-button"
-                    >
-                        <MessageSquareCode size={14} />
-                        Get Started
-                    </a>
-                </div>
-
-                {/* Enterprise */}
-                <div className="bg-white/5 border-2 border-institutional-white/30 rounded-3xl p-10 hover:border-institutional-white/50 transition-all group">
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="font-institutional text-2xl font-bold text-institutional-white uppercase">Enterprise</h3>
-                    </div>
-
-                    <div className="mb-8">
-                        <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-5xl font-black text-institutional-white">Custom</span>
-                        </div>
-                        <p className="text-gray-400 text-sm font-light flex items-center gap-2">
-                            <Clock size={12} /> 20+ Day Delivery
-                        </p>
-                    </div>
-
-                    <ul className="space-y-4 mb-10">
-                        {[
-                            "Everything in Full Implementation",
-                            "Production order & batch tracking",
-                            "Custom financial dashboards",
-                            "Manager.io Server (self-hosted) deployment",
-                            "NBR and AEO compliance reporting",
-                            "60-day critical support"
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                                <Check className="text-institutional-white flex-shrink-0 mt-1" size={18} />
-                                <span className="text-gray-300 text-sm">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <a
-                        href="https://wa.me/8801719300849?text=Inquiry: Enterprise Manager.io Solution - Custom Quote"
-                        className="w-full flex items-center justify-center gap-2 bg-institutional-white text-deep-navy-black px-6 py-4 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-institutional-white/90 transition haptic-button"
-                    >
-                        <MessageSquareCode size={14} />
-                        Request Quote
-                    </a>
-                </div>
-            </div>
-
-            {/* Guarantee */}
-            <div className="max-w-4xl mx-auto mt-20 bg-action-gold/10 border border-action-gold/30 rounded-3xl p-12 text-center">
-                <h3 className="font-institutional text-3xl font-bold text-action-gold uppercase mb-4">
-                    Our Promise
-                </h3>
-                <p className="text-gray-300 text-lg font-light leading-relaxed">
-                    If the final setup doesn&apos;t match what we agreed, we fix it at no extra cost.
-                    Every delivery is verified against your requirements before handover.
-                </p>
-            </div>
-
-            {/* Manager.io Cloud Pricing Note */}
-            <div className="max-w-4xl mx-auto mt-12 bg-electric-cyan/10 border border-electric-cyan/30 rounded-3xl p-12">
-                <h3 className="font-institutional text-2xl font-bold text-electric-cyan uppercase mb-6">
-                    Manager.io License Costs
-                </h3>
-                <div className="space-y-4 text-gray-300 font-light leading-relaxed">
-                    <p>
-                        <span className="text-institutional-white font-bold">Manager.io Cloud Edition:</span> $590 USD/year (fixed, paid directly to Manager.io). Our setup and support charges are separate — see the tiers above.
+            {/* ── HERO ─────────────────────────────────────────────────── */}
+            <section className="pt-32 pb-20 px-8 border-b border-white/5">
+                <div className="max-w-4xl mx-auto text-center">
+                    <p className="text-electric-cyan text-xs font-black uppercase tracking-widest mb-6">
+                        Continuous Architecture
                     </p>
-                    <p className="text-gray-500 text-sm">
-                        Manager.io also offers a free Desktop Edition and a self-hosted Server Edition. Talk to us about which option fits your business best.
+                    <h1 className="font-institutional text-4xl md:text-7xl font-medium uppercase tracking-tight mb-6">
+                        ROI-Guaranteed<br />Implementation
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-12">
+                        Accounting isn't a one-time setup. It's a continuous process.
+                        <br />
+                        We partner with you month-over-month to ensure your system evolves with your business.
                     </p>
-                </div>
-            </div>
 
-            {/* FAQ-style bottom */}
-            <div className="max-w-3xl mx-auto mt-16 text-center">
-                <p className="text-gray-500 mb-6">Not sure which package? No problem.</p>
-                <a
-                    href="https://wa.me/8801719300849?text=Hi, I'd like to discuss pricing options for my business."
-                    className="inline-flex items-center gap-3 text-electric-cyan hover:text-action-gold transition text-sm font-bold uppercase tracking-widest"
-                >
-                    Send us a message — consultations are free <ArrowRight size={14} />
-                </a>
-            </div>
+                    <div className="inline-flex items-center gap-3 px-6 py-3 bg-action-gold/10 border border-action-gold/30 rounded-full text-action-gold text-sm font-bold uppercase tracking-wider mb-16">
+                        <TrendingUp size={16} /> 6-Month ROI Guarantee or Full Refund
+                    </div>
+
+                    <div className="text-center">
+                        <Link
+                            href="/deploy"
+                            className="inline-flex items-center gap-3 gold-racer haptic-button px-12 py-6 rounded-2xl uppercase tracking-widest text-sm shadow-2xl"
+                        >
+                            <MessageSquareCode size={22} /> START PROJECT
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── PRICING TIERS ─────────────────────────────────────────── */}
+            <section className="py-24 px-8">
+                <div className="max-w-6xl mx-auto">
+                    {/* Legend */}
+                    <div className="text-center mb-16">
+                        <p className="text-gray-500 text-sm uppercase tracking-wider mb-2">The "Fractional Architect" Model</p>
+                        <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-400 mb-8">
+                            <span>✓ Dedicated Slack/WhatsApp Channel</span>
+                            <span>✓ Weekly Review Calls</span>
+                            <span>✓ Continuous Training</span>
+                            <span>✓ Quarterly Audit Reports</span>
+                        </div>
+                    </div>
+
+                    {/* Tiers */}
+                    <div className="grid lg:grid-cols-3 gap-8">
+                        {/* Tier 1: Standard */}
+                        <div className="group relative bg-white/5 border border-white/10 rounded-[32px] p-10 md:p-12 hover:border-action-gold/40 transition-all lg:hover:-translate-y-4 lg:hover:shadow-2xl">
+                            <div className="text-center">
+                                <h3 className="font-institutional text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4 text-gray-200">
+                                    Standard
+                                </h3>
+                                <p className="text-gray-400 text-sm mb-8">
+                                    Service & Small Trading Businesses
+                                </p>
+                                <div className="text-5xl font-black text-white mb-2">
+                                    ৳15,000<span className="text-lg font-normal text-gray-500">/mo</span>
+                                </div>
+                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-10">Billed Quarterly</p>
+
+                                <ul className="space-y-4 mb-12 text-left">
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Full Implementation:</strong> COA, Invoicing, Expenses.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Monthly Review:</strong> We check 10% of entries for errors.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Support:</strong> 48-hour response time via Email.
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/8801719300849" className="block w-full py-4 rounded-xl border border-white/20 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                                    Choose Standard
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Tier 2: Premium (Most Popular) */}
+                        <div className="group relative bg-white/5 border border-action-gold/50 rounded-[32px] p-10 md:p-12 hover:border-action-gold transition-all lg:hover:-translate-y-4 lg:hover:shadow-[0_0_40px_rgba(255,215,0,0.1)]">
+                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-action-gold text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                                Most Popular
+                            </div>
+                            <div className="text-center">
+                                <h3 className="font-institutional text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4 text-action-gold">
+                                    Premium
+                                </h3>
+                                <p className="text-gray-400 text-sm mb-8">
+                                    Inventory-Heavy / Distribution / Const.
+                                </p>
+                                <div className="text-5xl font-black text-action-gold mb-2">
+                                    ৳30,000<span className="text-lg font-normal text-gray-500">/mo</span>
+                                </div>
+                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-10">Billed Quarterly</p>
+
+                                <ul className="space-y-4 mb-12 text-left">
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm font-medium">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Complex Workflows:</strong> Projects, Inventory, POs.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Weekly Audit:</strong> We check critical ledgers every week.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Priority Support:</strong> Direct WhatsApp access (10am-6pm).
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-action-gold shrink-0" />
+                                        <strong>Training:</strong> Monthly refresher session for staff.
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/8801719300849" className="block w-full py-4 rounded-xl bg-action-gold text-black text-sm font-bold uppercase tracking-widest hover:bg-white transition-all shadow-lg">
+                                    Choose Premium
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Tier 3: Enterprise */}
+                        <div className="group relative bg-white/5 border border-white/10 rounded-[32px] p-10 md:p-12 hover:border-electric-cyan/40 transition-all lg:hover:-translate-y-4 lg:hover:shadow-2xl">
+                            <div className="text-center">
+                                <h3 className="font-institutional text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4 text-electric-cyan">
+                                    Enterprise
+                                </h3>
+                                <p className="text-gray-400 text-sm mb-8">
+                                    Groups · Manufacturing · Multi-Branch
+                                </p>
+                                <div className="text-5xl font-black text-white mb-2">
+                                    Custom<span className="text-lg font-normal text-gray-500"> Quote</span>
+                                </div>
+                                <p className="text-gray-500 text-xs uppercase tracking-wider mb-10">Retainer Basis</p>
+
+                                <ul className="space-y-4 mb-12 text-left">
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-electric-cyan shrink-0" />
+                                        <strong>Architect-Level Oversight:</strong> Direct Founder Involvement.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-electric-cyan shrink-0" />
+                                        <strong>Custom Scripts:</strong> Liquid code for invoices/reports.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-electric-cyan shrink-0" />
+                                        <strong>Inter-Company:</strong> Consolidated Group Accounts.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-gray-300 text-sm">
+                                        <CheckCircle2 size={18} className="mt-1 text-electric-cyan shrink-0" />
+                                        <strong>On-Site:</strong> Quarterly site visits (Dhaka).
+                                    </li>
+                                </ul>
+                                <a href="https://wa.me/8801719300849" className="block w-full py-4 rounded-xl border border-white/20 text-sm font-bold uppercase tracking-widest hover:border-electric-cyan hover:text-electric-cyan transition-all">
+                                    Contact Founder
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Industries Row */}
+                    <div className="mt-16 flex flex-wrap justify-center gap-4 opacity-50">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 bg-white/5 px-4 py-2 rounded-full">
+                            <Sprout size={14} /> Agro
+                        </div>
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 bg-white/5 px-4 py-2 rounded-full">
+                            <Factory size={14} /> Manufacturing
+                        </div>
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 bg-white/5 px-4 py-2 rounded-full">
+                            <Truck size={14} /> Distribution
+                        </div>
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 bg-white/5 px-4 py-2 rounded-full">
+                            <Building2 size={14} /> Construction
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── EXPLAIN SECTION ──────────────────────────────────────── */}
+            <section className="py-24 px-8 bg-white/[0.02] border-t border-white/5">
+                <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start gap-12">
+                    <div className="flex-1">
+                        <p className="text-electric-cyan text-xs font-black uppercase tracking-widest mb-4">
+                            The Strategy
+                        </p>
+                        <h2 className="font-institutional text-3xl md:text-5xl font-medium uppercase tracking-tight mb-6">
+                            Why Monthly?
+                        </h2>
+                        <p className="text-gray-400 text-lg mb-8 font-light leading-relaxed">
+                            Most software implementations fail 3 months after the consultant leaves.
+                            New staff join, workflows change, and errors creep in.
+                        </p>
+                        <p className="text-gray-400 text-lg mb-8 font-light leading-relaxed">
+                            Our retainer model ensures <strong>Continuous Architecture</strong>. We don't just build the system; we monitor its health, verify the data integrity, and train your team as you grow.
+                        </p>
+                        <div className="p-6 bg-deep-navy-black border border-action-gold/30 rounded-2xl">
+                            <h4 className="text-action-gold font-bold uppercase tracking-wider text-sm mb-2">The 6-Month ROI Guarantee</h4>
+                            <p className="text-gray-300 text-sm font-light">
+                                If your verified accounting data doesn't reveal at least 2x the cost of our retainer in saved wastage, recovered revenue, or tax compliance savings within 6 months, we will refund the last 3 months of fees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── FOOTER ─────────────────────────────────────────────────── */}
+            <footer className="py-16 border-t border-white/5 px-8 bg-deep-navy-black">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="text-center md:text-left">
+                            <p className="font-institutional text-gray-400 font-light">
+                                <span className="text-action-gold font-bold">MD ABU HASAN</span> · Founder & Chief Architect, INSPIRON TECH
+                            </p>
+                            <p className="text-gray-600 text-sm mt-1">
+                                Official Manager.io Partner · Dhaka 1217, Bangladesh
+                            </p>
+                        </div>
+
+                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                            <Link href="/about" className="hover:text-electric-cyan transition-colors">About</Link>
+                            <Link href="/services" className="hover:text-electric-cyan transition-colors">Services</Link>
+                            <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
+                            <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
+                            <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
+                            <Link href="/client-feedback" className="hover:text-electric-cyan transition-colors">Client Feedback</Link>
+                            <Link href="/privacy" className="hover:text-electric-cyan transition-colors">Privacy</Link>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <a
+                            href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-electric-cyan text-sm hover:underline"
+                        >
+                            Verify on Upwork ↗
+                        </a>
+                        <a href="https://forum.manager.io/u/abu_hasan"
+                            target="_blank"
+                            className="text-electric-cyan text-sm hover:underline">
+                            Active on Manager.io Forum ↗
+                        </a>
+                        <a
+                            href="https://www.manager.io/advisors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-action-gold text-sm hover:underline"
+                        >
+                            Verify on Manager.io ↗
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
         </div>
     );
 }

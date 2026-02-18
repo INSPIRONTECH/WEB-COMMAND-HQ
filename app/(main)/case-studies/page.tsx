@@ -1,142 +1,253 @@
-/**
- * CASE STUDIES — INSPIRON TECH
- * Real implementations with verified numbers.
- */
-
 import React from 'react';
-import { Building2, TrendingUp, ArrowRight, CheckCircle2, MessageSquareCode } from 'lucide-react';
+import { BookOpen, TrendingUp, Layers, Printer, MessageSquareCode } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CaseStudiesPage() {
     return (
-        <div className="min-h-screen bg-deep-navy-black pt-32 pb-24 px-6">
-            {/* Page Header */}
-            <div className="max-w-7xl mx-auto text-center mb-20">
-                <div className="inline-flex items-center gap-2 bg-electric-cyan/10 border border-electric-cyan/30 px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest text-electric-cyan mb-8">
-                    <Building2 size={14} />
-                    Real Implementations
-                </div>
-
-                <h1 className="font-institutional text-5xl md:text-7xl font-medium text-institutional-white uppercase tracking-tighter leading-[0.9] mb-6">
-                    Case <span className="text-action-gold">Studies</span>
+        <div className="min-h-screen bg-deep-navy-black text-institutional-white selection:bg-electric-cyan selection:text-deep-navy-black">
+            {/* Hero */}
+            <section className="py-32 px-8 text-center border-b border-white/5">
+                <h1 className="font-institutional text-4xl md:text-6xl font-medium uppercase tracking-tight mb-6">
+                    Engineering The Impossible
                 </h1>
-
-                <p className="font-institutional text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
-                    See how we&apos;ve helped businesses across Bangladesh move from spreadsheets and manual ledgers to clean, automated accounting.
+                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                    Real Bangladesh businesses. Complex workflows.
+                    <br />
+                    Architected on Manager.io with 0.1% error tolerance.
                 </p>
-            </div>
+            </section>
 
-            {/* Case Study Grid */}
-            <div className="max-w-7xl mx-auto space-y-12">
+            {/* Case Study 1: Nobin Agro */}
+            <section className="py-24 px-8 border-b border-white/5">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div className="text-electric-cyan font-bold tracking-widest uppercase mb-4 text-sm">Case Study #01 — Aquaculture & Livestock</div>
+                        <h2 className="font-institutional text-3xl md:text-5xl font-medium uppercase tracking-tight mb-6">
+                            Nobin Agro (Gazipur)
+                        </h2>
+                        <p className="text-xl text-gray-300 mb-8 font-light leading-relaxed">
+                            A massive 30-pond aquaculture and livestock operation facing inventory chaos.
+                        </p>
 
-                {/* Nobin Agro Limited */}
-                <div className="bg-white/5 border-2 border-action-gold/30 rounded-3xl p-12 hover:border-action-gold/50 transition-all group">
-                    <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-                        <div>
-                            <div className="inline-flex items-center gap-2 bg-action-gold/10 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest text-action-gold mb-4">
-                                Aquaculture · Manager.io
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-action-gold font-bold uppercase tracking-wider text-sm mb-2">The Challenge</h3>
+                                <p className="text-gray-400 leading-relaxed">
+                                    Tracking profitability for 30 separate ponds and livestock batches. Feed was purchased in bulk but consumed daily across different sheds/ponds. Mortality rates were untracked expenses.
+                                </p>
                             </div>
-                            <h2 className="font-institutional text-4xl font-bold text-institutional-white mb-3">
-                                Nobin Agro Limited
-                            </h2>
-                            <p className="text-gray-400 text-lg font-light">
-                                Full Manager.io implementation for a large-scale aquaculture operation
+                            <div>
+                                <h3 className="text-electric-cyan font-bold uppercase tracking-wider text-sm mb-2">The Architecture</h3>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li className="flex gap-3">
+                                        <TrendingUp size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Projects:</strong> Each pond cycle and livestock batch created as a separate Project.</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <Layers size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Production Orders:</strong> Daily feed consumption recorded to move cost from Inventory &rarr; WIP (Project).</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <BookOpen size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Custom COA:</strong> Specific accounts for Mortality Loss to track dead stock value.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white/5 p-10 rounded-[40px] border border-white/10">
+                        <div className="grid grid-cols-2 gap-8 text-center">
+                            <div className="p-6 bg-black/20 rounded-2xl">
+                                <div className="text-4xl font-bold text-white mb-2">30+</div>
+                                <div className="text-xs uppercase tracking-widest text-gray-500">Ponds Tracked</div>
+                            </div>
+                            <div className="p-6 bg-black/20 rounded-2xl">
+                                <div className="text-4xl font-bold text-action-gold mb-2">100%</div>
+                                <div className="text-xs uppercase tracking-widest text-gray-500">Feed Traceability</div>
+                            </div>
+                            <div className="p-6 bg-black/20 rounded-2xl col-span-2">
+                                <div className="text-4xl font-bold text-electric-cyan mb-2">Real-Time</div>
+                                <div className="text-xs uppercase tracking-widest text-gray-500">Batch Profitability</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Case Study 2: STEP Group */}
+            <section className="py-24 px-8 border-b border-white/5 bg-white/[0.02]">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                    <div className="order-2 md:order-1 bg-white/5 p-10 rounded-[40px] border border-white/10">
+                        {/* Visual Representation or Stats */}
+                        <div className="flex flex-col gap-4">
+                            <div className="p-6 bg-black/20 rounded-2xl border-l-4 border-electric-cyan">
+                                <div className="text-lg font-bold text-white">STEP Footwear</div>
+                                <div className="text-sm text-gray-500">Manufacturing & Retail</div>
+                            </div>
+                            <div className="p-6 bg-black/20 rounded-2xl border-l-4 border-action-gold ml-8">
+                                <div className="text-lg font-bold text-white">Adhesive Unit</div>
+                                <div className="text-sm text-gray-500">Supplies Glue to Footwear</div>
+                            </div>
+                            <div className="p-6 bg-black/20 rounded-2xl border-l-4 border-institutional-white ml-8">
+                                <div className="text-lg font-bold text-white">Shoe Last Unit</div>
+                                <div className="text-sm text-gray-500">Supplies Lasts to Footwear</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="order-1 md:order-2">
+                        <div className="text-electric-cyan font-bold tracking-widest uppercase mb-4 text-sm">Case Study #02 — The Origin Story (2011-2015)</div>
+                        <h2 className="font-institutional text-3xl md:text-5xl font-medium uppercase tracking-tight mb-2">
+                            Step Shoe Last & Accessories
+                        </h2>
+                        <h3 className="text-xl text-action-gold font-medium mb-6">
+                            Executive Officer, Commercial
+                        </h3>
+                        <p className="text-xl text-gray-300 mb-8 font-light leading-relaxed">
+                            "I wasn't hired to fix the accounting. I was hired to manage commercial operations. But I could see what no one else was measuring."
+                        </p>
+
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-action-gold font-bold uppercase tracking-wider text-sm mb-2">The Challenge</h3>
+                                <p className="text-gray-400 leading-relaxed">
+                                    Managing 4 distinct companies where one (Adhesives) sells to another (Footwear). Need to track inter-company balances and see a consolidated Group Profit & Loss.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-electric-cyan font-bold uppercase tracking-wider text-sm mb-2">The Architecture</h3>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li className="flex gap-3">
+                                        <Layers size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Divisional Accounting:</strong> Each entity setup as a Division (or separate business file) for granular control.</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <TrendingUp size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Inter-Company Logic:</strong> Sales Invoice in Entity A automatically mapped to Purchase Invoice in Entity B via clearing accounts.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Case Study 3: X-Press Technologies */}
+            <section className="py-24 px-8 border-b border-white/5 bg-white/[0.02]">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div className="text-electric-cyan font-bold tracking-widest uppercase mb-4 text-sm">Case Study #03 — ISP & Telecommunications</div>
+                        <h2 className="font-institutional text-3xl md:text-5xl font-medium uppercase tracking-tight mb-6">
+                            X-Press Technologies
+                        </h2>
+                        <h3 className="text-xl text-action-gold font-medium mb-6">
+                            IT Support Engineer &rarr; Asst. Manager (Accounts)
+                        </h3>
+                        <p className="text-xl text-gray-300 mb-8 font-light leading-relaxed">
+                            "This is where I found Manager.io — inside an ISP's accounting department, reconciliation breaking between customers and payment gateways. I took responsibility for Accounts and never looked back."
+                        </p>
+
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-action-gold font-bold uppercase tracking-wider text-sm mb-2">The Transition</h3>
+                                <p className="text-gray-400 leading-relaxed">
+                                    Started as IT Support Engineer managing ISP billing reconciliation, CRM installations, technical support, and monthly operational reporting. Promoted to Asst. Manager (Accounts) — discovered Manager.io and took full responsibility for financial operations.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-electric-cyan font-bold uppercase tracking-wider text-sm mb-2">The Architecture</h3>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li className="flex gap-3">
+                                        <TrendingUp size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Billing Reconciliation:</strong> Solved high-volume conflict resolution between ISP billing database and payment gateways.</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <Layers size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>BTRC Compliance:</strong> Automated monthly regulatory reports for bandwidth consumption and user logs.</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <BookOpen size={20} className="text-electric-cyan shrink-0" />
+                                        <span><strong>Full VAT Cycle:</strong> Hands-on management of Mushak-11, 16, 17, 18, and 19 registers.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white/5 p-10 rounded-[40px] border border-white/10">
+                        <div className="grid grid-cols-1 gap-8 text-center">
+                            <div className="p-8 bg-black/20 rounded-2xl">
+                                <div className="text-5xl font-bold text-white mb-2">1st</div>
+                                <div className="text-xs uppercase tracking-widest text-gray-500">Manager.io Deployment</div>
+                            </div>
+                            <div className="p-8 bg-black/20 rounded-2xl">
+                                <div className="text-5xl font-bold text-action-gold mb-2">100%</div>
+                                <div className="text-xs uppercase tracking-widest text-gray-500">VAT Compliance (Mushak)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-20 px-8 bg-gradient-to-t from-electric-cyan/[0.05] to-transparent text-center">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="font-institutional text-3xl md:text-5xl uppercase tracking-tight mb-6">Your Workflow is Next</h2>
+                    <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto font-light">
+                        We have architected the most complex businesses in Bangladesh. We are ready for yours.
+                    </p>
+                    <a href="https://wa.me/8801719300849" className="gold-racer haptic-button px-12 py-6 rounded-2xl uppercase tracking-widest text-sm shadow-2xl inline-flex items-center gap-3">
+                        <MessageSquareCode size={22} /> Architect My Business
+                    </a>
+                </div>
+            </section>
+
+            {/* FOOTER - INLINE (Temporary until SharedFooter) */}
+            <footer className="py-16 border-t border-white/5 px-8 bg-deep-navy-black">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="text-center md:text-left">
+                            <p className="font-institutional text-gray-400 font-light">
+                                <span className="text-action-gold font-bold">MD ABU HASAN</span> · Founder & Chief Architect, INSPIRON TECH
+                            </p>
+                            <p className="text-gray-600 text-sm mt-1">
+                                Official Manager.io Partner · Dhaka 1217, Bangladesh
                             </p>
                         </div>
-                        <div className="text-right">
-                            <div className="text-5xl font-black text-action-gold mb-2">৳150Cr+</div>
-                            <p className="text-gray-500 text-sm uppercase tracking-wider">Annual Transaction Volume</p>
+
+                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                            <Link href="/services" className="hover:text-electric-cyan transition-colors">Services</Link>
+                            <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
+                            <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
+                            <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
+                            <Link href="/client-feedback" className="hover:text-electric-cyan transition-colors">Client Feedback</Link>
+                            <Link href="/privacy" className="hover:text-electric-cyan transition-colors">Privacy</Link>
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 mb-10">
-                        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                            <div className="text-3xl font-black text-electric-cyan mb-2">~40%</div>
-                            <p className="text-gray-400 text-sm">Reduction in Admin Overhead</p>
-                        </div>
-                        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                            <div className="text-3xl font-black text-action-gold mb-2">29 Ponds</div>
-                            <p className="text-gray-400 text-sm">Managed on One Platform</p>
-                        </div>
-                        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                            <div className="text-3xl font-black text-institutional-white mb-2">50+ Staff</div>
-                            <p className="text-gray-400 text-sm">Trained and Supported</p>
-                        </div>
-                    </div>
-
-                    <div className="space-y-4 mb-8">
-                        <h3 className="font-institutional text-xl font-bold text-institutional-white uppercase">
-                            What We Delivered
-                        </h3>
-                        <ul className="grid md:grid-cols-2 gap-4">
-                            {[
-                                "Complete Chart of Accounts for aquaculture",
-                                "Multi-pond production order tracking",
-                                "Feed inventory reconciliation",
-
-                                "Batch-lease allocation logic",
-                                "Staff training across the organization"
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-3">
-                                    <CheckCircle2 className="text-action-gold flex-shrink-0 mt-1" size={18} />
-                                    <span className="text-gray-300 text-sm">{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <Link
-                        href="/case-studies/nobin-agro"
-                        className="inline-flex items-center gap-2 bg-action-gold text-deep-navy-black px-8 py-4 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-action-gold/90 transition haptic-button"
-                    >
-                        Read Full Story
-                        <ArrowRight size={14} />
-                    </Link>
-                </div>
-
-                {/* Industries We've Served */}
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
-                    <h3 className="font-institutional text-2xl font-bold text-institutional-white mb-6">
-                        Other Industries We&apos;ve Served
-                    </h3>
-                    <p className="text-gray-400 mb-8 font-light">
-                        We&apos;ve implemented Manager.io across diverse business types. Each solution is custom-built for the specific workflow.
-                    </p>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[
-                            { name: 'Trims & Label Printing', type: 'Manufacturing' },
-                            { name: 'Government Tender Services', type: 'Construction' },
-                            { name: 'Leathergoods Manufacturing', type: 'Manufacturing' },
-                            { name: 'Cooperative Society', type: 'Financial Services' },
-                            { name: 'Medical Equipment Trading', type: 'Healthcare' },
-                            { name: 'Construction Services', type: 'Construction' },
-                        ].map((client, i) => (
-                            <div key={i} className="bg-white/[0.03] border border-white/10 rounded-xl p-6 hover:border-electric-cyan/30 transition">
-                                <h4 className="font-bold text-institutional-white mb-1">{client.name}</h4>
-                                <p className="text-gray-500 text-sm">{client.type}</p>
-                            </div>
-                        ))}
+                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <a
+                            href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-electric-cyan text-sm hover:underline"
+                        >
+                            Verify on Upwork ↗
+                        </a>
+                        <a href="https://forum.manager.io/u/abu_hasan"
+                            target="_blank"
+                            className="text-electric-cyan text-sm hover:underline">
+                            Active on Manager.io Forum ↗
+                        </a>
+                        <a
+                            href="https://www.manager.io/advisors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-action-gold text-sm hover:underline"
+                        >
+                            Verify on Manager.io ↗
+                        </a>
                     </div>
                 </div>
-            </div>
-
-            {/* CTA Section */}
-            <div className="max-w-4xl mx-auto mt-20 bg-electric-cyan/10 border border-electric-cyan/30 rounded-3xl p-12 text-center">
-                <TrendingUp className="mx-auto mb-6 text-electric-cyan" size={48} />
-                <h3 className="font-institutional text-3xl font-bold text-electric-cyan uppercase mb-4">
-                    Ready to Modernize Your Accounting?
-                </h3>
-                <p className="text-gray-300 text-lg font-light leading-relaxed mb-8">
-                    Every project starts with a free conversation. Tell us about your business and we&apos;ll show you what&apos;s possible.
-                </p>
-                <a
-                    href="https://wa.me/8801719300849?text=Hi, I'd like to discuss Manager.io for my business."
-                    className="inline-flex items-center gap-2 bg-electric-cyan text-deep-navy-black px-10 py-5 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-electric-cyan/90 transition haptic-button"
-                >
-                    <MessageSquareCode size={14} />
-                    Start a Conversation
-                </a>
-            </div>
+            </footer>
         </div>
     );
 }

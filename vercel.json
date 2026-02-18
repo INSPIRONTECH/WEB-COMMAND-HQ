@@ -1,0 +1,104 @@
+{
+    "redirects": [
+        {
+            "source": "/architect",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=homepage&utm_medium=hero&utm_campaign=architect",
+            "permanent": true
+        },
+        {
+            "source": "/build-your-workflow",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=services&utm_medium=hero&utm_campaign=workflow",
+            "permanent": true
+        },
+        {
+            "source": "/deploy",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=pricing&utm_medium=cta&utm_campaign=deploy",
+            "permanent": true
+        },
+        {
+            "source": "/manager-io",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=contact&utm_medium=subtext&utm_campaign=standalone",
+            "permanent": true
+        },
+        {
+            "source": "/no-sales",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=facebook&utm_medium=bio&utm_campaign=no-sales",
+            "permanent": true
+        },
+        {
+            "source": "/fast-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=whatsapp&utm_medium=catalog&utm_campaign=fast",
+            "permanent": true
+        },
+        {
+            "source": "/workflow-logic",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=whatsapp&utm_medium=status&utm_campaign=workflow-logic",
+            "permanent": true
+        },
+        {
+            "source": "/manager-demo",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=youtube&utm_medium=description&utm_campaign=demo",
+            "permanent": true
+        },
+        {
+            "source": "/chief-architect",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=email&utm_medium=signature&utm_campaign=chief-architect",
+            "permanent": true
+        },
+        {
+            "source": "/trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=trial",
+            "permanent": true
+        },
+        {
+            "source": "/free-manager",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=free-manager",
+            "permanent": true
+        },
+        {
+            "source": "/try-manager",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=try",
+            "permanent": true
+        },
+        {
+            "source": "/nbr-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=nbr",
+            "permanent": true
+        },
+        {
+            "source": "/agro-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=agro",
+            "permanent": true
+        },
+        {
+            "source": "/manufacturing-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=manufacturing",
+            "permanent": true
+        },
+        {
+            "source": "/distributor-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=distributor",
+            "permanent": true
+        },
+        {
+            "source": "/construction-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=construction",
+            "permanent": true
+        },
+        {
+            "source": "/medical-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=medical",
+            "permanent": true
+        },
+        {
+            "source": "/export-trial",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=direct&utm_campaign=export",
+            "permanent": true
+        },
+        {
+            "source": "/cloud-accounting",
+            "destination": "https://www.manager.io/cloud-edition/free-trial/7478b418-50b1-70e2-549b-3a506372d7c0?utm_source=seo&utm_campaign=cloud-accounting",
+            "permanent": true
+        }
+    ]
+}

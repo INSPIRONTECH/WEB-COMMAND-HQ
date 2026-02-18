@@ -1,207 +1,224 @@
-/**
- * CONTACT PAGE - CORE_MISSION-CONTROL-WEB V2.0
- * Direct Line to MD ABU HASAN | Official Manager.io Partner
- * Authority: INSPIRON TECH
- */
+"use client";
 
-import React from 'react';
-import { MapPin, Phone, Mail, MessageSquareCode, Clock, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { MessageSquareCode, Mail, Phone, MapPin, Send, ArrowRight, Clock } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ContactPage() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        business: '',
+        message: '',
+    });
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // In a real app, this would send to an API.
+        // For now, we simulate success and maybe redirect to WhatsApp.
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 5000);
+
+        // Optional: Auto-format a WhatsApp message
+        const text = `Name: ${formData.name}%0AEmail: ${formData.email}%0APhone: ${formData.phone}%0ABusiness: ${formData.business}%0AMessage: ${formData.message}`;
+        window.open(`https://wa.me/8801719300849?text=${text}`, '_blank');
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
     return (
-        <div className="min-h-screen bg-deep-navy-black pt-32 pb-24 px-6">
-            <div className="max-w-7xl mx-auto">
-                {/* Page Header */}
-                <div className="text-center mb-20">
-                    <div className="inline-flex items-center gap-2 bg-action-gold/10 border border-action-gold/30 px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest text-action-gold mb-8">
-                        <Shield size={14} />
-                        Get In Touch
+        <div className="min-h-screen bg-deep-navy-black text-institutional-white selection:bg-electric-cyan selection:text-deep-navy-black">
+
+            {/* HERO SECTION */}
+            <section className="pt-32 pb-16 px-8 border-b border-white/5">
+                <div className="max-w-6xl mx-auto text-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/20 text-electric-cyan text-xs font-bold uppercase tracking-widest mb-6">
+                        <MessageSquareCode size={14} />
+                        <span>Direct Line</span>
                     </div>
-
-                    <h1 className="font-institutional text-5xl md:text-7xl font-medium text-institutional-white uppercase tracking-tighter leading-[0.9] mb-6">
-                        Contact <span className="text-action-gold">Us</span>
+                    <h1 className="font-institutional text-4xl md:text-7xl font-bold uppercase tracking-tight mb-8">
+                        Deploy Your <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-action-gold">
+                            Architecture
+                        </span>
                     </h1>
-
-                    <p className="font-institutional text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
-                        Direct line to MD ABU HASAN. Every inquiry receives a response within 24 hours.
+                    <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                        We don't have a sales team. You talk directly to the Chief Architect.
+                        Tell us about your workflow, and we'll tell you if we can solve it.
                     </p>
                 </div>
+            </section>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    {/* Contact Information */}
-                    <div className="space-y-8">
-                        <div className="bg-white/5 border-2 border-action-gold/30 rounded-3xl p-10">
-                            <h2 className="font-institutional text-3xl font-bold text-action-gold uppercase mb-8">
-                                Direct Contact
+            <section className="py-24 px-8">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24">
+
+                    {/* LEFT COLUMN: CONTACT INFO */}
+                    <div className="space-y-16">
+                        <div>
+                            <h2 className="font-institutional text-3xl font-medium uppercase mb-8">
+                                Channels
                             </h2>
+                            <div className="space-y-8">
+                                <a href="https://wa.me/8801719300849" target="_blank" className="flex items-start gap-6 group">
+                                    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:border-electric-cyan/50 transition-colors">
+                                        <MessageSquareCode className="text-electric-cyan" size={24} />
+                                    </div>
+                                    <div>
+                                        <div className="text-lg font-bold text-white mb-1 group-hover:text-electric-cyan transition-colors">WhatsApp & Telegram</div>
+                                        <div className="text-gray-400 font-mono text-sm">+880 1719-300849</div>
+                                        <div className="text-xs text-action-gold uppercase tracking-widest mt-2">Instant Response</div>
+                                    </div>
+                                </a>
 
-                            <div className="space-y-6">
-                                {/* Name */}
-                                <div>
-                                    <div className="text-sm text-gray-500 uppercase tracking-wider mb-2">
-                                        Founder
+                                <a href="mailto:consult@inspirontech.bd" className="flex items-start gap-6 group">
+                                    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:border-white/30 transition-colors">
+                                        <Mail className="text-white" size={24} />
                                     </div>
-                                    <div className="text-2xl font-bold text-institutional-white">
-                                        MD ABU HASAN
+                                    <div>
+                                        <div className="text-lg font-bold text-white mb-1 group-hover:text-electric-cyan transition-colors">Email Intelligence</div>
+                                        <div className="text-gray-400 font-mono text-sm">hello@inspiron.tech</div>
+                                        <div className="text-xs text-gray-500 uppercase tracking-widest mt-2">24h Turnaround</div>
                                     </div>
-                                    <div className="text-gray-400 font-light">
-                                        Founder & CEO, INSPIRON TECH
+                                </a>
+
+                                <div className="flex items-start gap-6">
+                                    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl">
+                                        <MapPin className="text-action-gold" size={24} />
+                                    </div>
+                                    <div>
+                                        <div className="text-lg font-bold text-white mb-1">Sector Command</div>
+                                        <div className="text-gray-400 text-sm leading-relaxed">
+                                            Suite 201, Eastern Kamalapur Complex<br />
+                                            Dhaka 1217<br />
+                                            Bangladesh
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* WhatsApp */}
-                                <div className="flex items-start gap-4 p-6 bg-electric-cyan/10 border border-electric-cyan/30 rounded-2xl">
-                                    <MessageSquareCode className="text-electric-cyan flex-shrink-0 mt-1" size={24} />
-                                    <div>
-                                        <div className="text-sm text-gray-500 uppercase tracking-wider mb-1">
-                                            WhatsApp (Preferred)
-                                        </div>
-                                        <a
-                                            href="https://wa.me/8801719300849"
-                                            className="text-xl font-bold text-electric-cyan hover:underline"
-                                        >
-                                            +880 1719-300849
-                                        </a>
-                                    </div>
+                            <div className="mt-12 pt-8 border-t border-white/10">
+                                <p className="text-gray-500 text-sm mb-2">Prefer to explore on your own?</p>
+                                <a href="/manager-io" className="text-electric-cyan text-sm uppercase tracking-widest hover:text-white transition-colors border-b border-electric-cyan/30 hover:border-white pb-1">
+                                    Try Manager Alone ↗
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="p-8 bg-white/5 border border-white/10 rounded-3xl">
+                            <div className="flex items-center gap-3 mb-4 text-action-gold">
+                                <Clock size={20} />
+                                <span className="text-sm font-bold uppercase tracking-wider">Operational Hours</span>
+                            </div>
+                            <div className="space-y-2 text-sm text-gray-400">
+                                <div className="flex justify-between border-b border-white/5 pb-2">
+                                    <span>Saturday – Thursday</span>
+                                    <span className="text-white font-mono">10:00 – 19:00</span>
                                 </div>
-
-                                {/* Phone */}
-                                <div className="flex items-start gap-4">
-                                    <Phone className="text-gray-400 flex-shrink-0 mt-1" size={24} />
-                                    <div>
-                                        <div className="text-sm text-gray-500 uppercase tracking-wider mb-1">
-                                            Direct Line
-                                        </div>
-                                        <a
-                                            href="tel:+8801719300849"
-                                            className="text-lg font-medium text-institutional-white hover:text-action-gold transition"
-                                        >
-                                            +880 1719-300849
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Email */}
-                                <div className="flex items-start gap-4">
-                                    <Mail className="text-gray-400 flex-shrink-0 mt-1" size={24} />
-                                    <div>
-                                        <div className="text-sm text-gray-500 uppercase tracking-wider mb-1">
-                                            Email
-                                        </div>
-                                        <a
-                                            href="mailto:hello@inspiron.tech"
-                                            className="text-lg font-medium text-institutional-white hover:text-action-gold transition break-all"
-                                        >
-                                            hello@inspiron.tech
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Office Location */}
-                                <div className="flex items-start gap-4">
-                                    <MapPin className="text-gray-400 flex-shrink-0 mt-1" size={24} />
-                                    <div>
-                                        <div className="text-sm text-gray-500 uppercase tracking-wider mb-1">
-                                            Office Location
-                                        </div>
-                                        <address className="text-lg font-light text-gray-300 not-italic leading-relaxed">
-                                            Eastern Kamalapur Complex (2nd Floor)<br />
-                                            64-68, North Kamalapur<br />
-                                            Motijheel, Dhaka - 1217, Bangladesh
-                                        </address>
-                                    </div>
-                                </div>
-
-                                {/* Operating Hours */}
-                                <div className="flex items-start gap-4">
-                                    <Clock className="text-gray-400 flex-shrink-0 mt-1" size={24} />
-                                    <div>
-                                        <div className="text-sm text-gray-500 uppercase tracking-wider mb-1">
-                                            Operating Hours
-                                        </div>
-                                        <div className="text-lg font-light text-gray-300">
-                                            Saturday - Thursday: 10:00 AM - 7:00 PM<br />
-                                            <span className="text-gray-500">Friday: Closed</span>
-                                        </div>
-                                    </div>
+                                <div className="flex justify-between pt-2">
+                                    <span>Friday</span>
+                                    <span className="text-electric-cyan font-mono">Emergency Support Only</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Quick Inquiry Form */}
-                    <div className="bg-white/5 border-2 border-electric-cyan/30 rounded-3xl p-10">
-                        <h2 className="font-institutional text-3xl font-bold text-electric-cyan uppercase mb-8">
-                            Quick Inquiry
+                    {/* RIGHT COLUMN: FORM */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-[40px] p-8 md:p-12">
+                        <h2 className="font-institutional text-2xl font-medium uppercase mb-8">
+                            Initiate Protocol
                         </h2>
 
-                        <div className="space-y-6">
-                            <p className="text-gray-400 leading-relaxed">
-                                For fastest response, message directly via WhatsApp. For formal inquiries, use the contact details provided.
-                            </p>
-
-                            <div className="space-y-4">
-                                <a
-                                    href="https://wa.me/8801719300849?text=Inquiry: Manager.io Implementation"
-                                    className="w-full flex items-center justify-center gap-3 bg-action-gold text-deep-navy-black px-8 py-5 rounded-xl font-black uppercase text-sm tracking-widest hover:bg-action-gold/90 transition active:scale-95"
-                                >
-                                    <MessageSquareCode size={20} />
-                                    Manager.io Implementation
-                                </a>
-
-                                <a
-                                    href="https://wa.me/8801719300849?text=Inquiry: Custom Dashboard Solution"
-                                    className="w-full flex items-center justify-center gap-3 bg-electric-cyan text-deep-navy-black px-8 py-5 rounded-xl font-black uppercase text-sm tracking-widest hover:bg-electric-cyan/90 transition active:scale-95"
-                                >
-                                    <MessageSquareCode size={20} />
-                                    Custom Dashboard Solution
-                                </a>
-
-                                <a
-                                    href="https://wa.me/8801719300849?text=Request: Free Accounting Audit"
-                                    className="w-full flex items-center justify-center gap-3 bg-institutional-white text-deep-navy-black px-8 py-5 rounded-xl font-black uppercase text-sm tracking-widest hover:bg-institutional-white/90 transition active:scale-95"
-                                >
-                                    <MessageSquareCode size={20} />
-                                    Free Accounting Audit
-                                </a>
-
-                                <a
-                                    href="https://wa.me/8801719300849?text=General Inquiry"
-                                    className="w-full flex items-center justify-center gap-3 bg-white/10 text-institutional-white border-2 border-white/30 px-8 py-5 rounded-xl font-black uppercase text-sm tracking-widest hover:bg-white/20 transition active:scale-95"
-                                >
-                                    <MessageSquareCode size={20} />
-                                    General Inquiry
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Enterprise Guarantee */}
-                        <div className="mt-10 p-6 bg-action-gold/10 border border-action-gold/30 rounded-xl">
-                            <div className="flex items-start gap-3">
-                                <Shield className="text-action-gold flex-shrink-0 mt-1" size={20} />
-                                <div>
-                                    <div className="font-bold text-action-gold mb-1">
-                                        24-Hour Response Guarantee
-                                    </div>
-                                    <p className="text-sm text-gray-400 leading-relaxed">
-                                        Every inquiry receives a response within 24 hours. Enterprise clients receive priority handling.
-                                    </p>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-electric-cyan outline-none transition-colors"
+                                        placeholder="Full Name"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Business</label>
+                                    <input
+                                        type="text"
+                                        name="business"
+                                        value={formData.business}
+                                        onChange={handleChange}
+                                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-electric-cyan outline-none transition-colors"
+                                        placeholder="Company Name"
+                                    />
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                {/* Official Partner Badge */}
-                <div className="max-w-4xl mx-auto mt-20 text-center">
-                    <div className="inline-flex items-center gap-3 bg-white/5 border border-action-gold/30 px-8 py-4 rounded-2xl">
-                        <Shield className="text-action-gold" size={24} />
-                        <span className="font-institutional text-lg font-bold text-action-gold uppercase tracking-wider">
-                            Official Manager.io Partner Bangladesh
-                        </span>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-electric-cyan outline-none transition-colors"
+                                        placeholder="john@example.com"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Phone</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-electric-cyan outline-none transition-colors"
+                                        placeholder="+880..."
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Workflow Challenge</label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    rows={4}
+                                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-electric-cyan outline-none transition-colors resize-none"
+                                    placeholder="Briefly describe the accounting or operational bottleneck you are facing..."
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full gold-racer haptic-button py-4 rounded-xl font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 group"
+                            >
+                                {submitted ? (
+                                    <span className="text-deep-navy-black">Sent Successfully</span>
+                                ) : (
+                                    <>
+                                        <span>Transmit Request</span>
+                                        <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
+                            </button>
+                            <p className="text-xs text-center text-gray-600 mt-4">
+                                This will open WhatsApp with your pre-filled details for instant connection.
+                            </p>
+                        </form>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }

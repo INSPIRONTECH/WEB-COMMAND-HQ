@@ -41,18 +41,18 @@ export const InstitutionalHero = () => {
 
                 {/* Main Headline — Plain Language */}
                 <h1 className="font-institutional text-4xl md:text-7xl lg:text-8xl font-medium text-institutional-white uppercase tracking-tighter leading-[0.9] mb-8">
-                    We Set Up <span className="text-action-gold">Manager.io</span><br />
-                    For Your Business
+                    I Don't Install Software.<br />
+                    <span className="text-action-gold">I Architect Logic.</span>
                 </h1>
 
                 {/* Subtitle — What you actually do, in human language */}
                 <p className="font-institutional text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-6 leading-relaxed font-light">
-                    Cloud accounting setup, customization, training, and ongoing support — tailored for businesses across Bangladesh.
+                    14+ years inside manufacturing plants, ISP control rooms, and medical warehouses — before founding Bangladesh's only Official Manager.io practice.
                 </p>
 
                 {/* Social Proof Line */}
                 <p className="text-sm text-gray-500 mb-14 font-light">
-                    15 years experience · 6+ industries served · Trusted from aquaculture to manufacturing
+                    15 years experience · 15+ industries served · Trusted by 50+ businesses
                 </p>
 
                 {/* CTAs */}
