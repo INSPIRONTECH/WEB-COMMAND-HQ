@@ -40,19 +40,19 @@ const COMPLIANCE = [
 
 export const GlobalFooter = () => {
     return (
-        <footer className="border-t border-[#00D2FF]/10 bg-[#010409] px-8 pt-16 pb-8">
+        <footer className="border-t border-electric-cyan/10 bg-deep-navy-black px-8 pt-16 pb-8">
             <div className="max-w-6xl mx-auto">
 
                 {/* ── 4-COLUMN GRID ─────────────────────────── */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8">
 
                     {/* COL 1 · INTELLIGENCE */}
-                    <div className="space-y-5">
+                    <div className="col-span-2 md:col-span-1 space-y-5">
                         <RefinedLogo size={40} />
                         <p className="font-institutional text-white/70 text-sm leading-relaxed">
                             I Architect Logic.
                         </p>
-                        <p className="font-mono text-[10px] text-[#00D2FF] tracking-widest">
+                        <p className="font-mono text-[10px] text-electric-cyan tracking-widest">
                             ● OFFICIAL MANAGER.IO PARTNER
                         </p>
                         <p className="font-mono text-[10px] text-white/30 tracking-widest">
@@ -73,7 +73,7 @@ export const GlobalFooter = () => {
                         {DIRECTORY.map(({ href, label }) => (
                             <Link key={href} href={href}
                                 className="block font-mono text-[11px] text-white/50
-                           hover:text-[#FFD700] tracking-widest transition-colors">
+                           hover:text-action-gold tracking-widest transition-colors">
                                 {label}
                             </Link>
                         ))}
@@ -87,7 +87,7 @@ export const GlobalFooter = () => {
                         {COMMAND.map(({ href, label }) => (
                             <Link key={href} href={href}
                                 className="block font-mono text-[11px] text-white/50
-                           hover:text-[#00D2FF] tracking-widest transition-colors">
+                           hover:text-electric-cyan tracking-widest transition-colors">
                                 {label}
                             </Link>
                         ))}
@@ -112,7 +112,7 @@ export const GlobalFooter = () => {
                                     target={external ? '_blank' : undefined}
                                     rel={external ? 'noopener noreferrer' : undefined}
                                     className="flex items-center gap-1 font-mono text-[10px]
-                             text-white/40 hover:text-[#00D2FF]
+                             text-white/40 hover:text-electric-cyan
                              tracking-widest transition-colors">
                                     {label}
                                     {external && <ExternalLink size={8} />}
@@ -137,12 +137,12 @@ export const GlobalFooter = () => {
                     <div className="flex gap-6">
                         <a href="https://www.upwork.com/freelancers/~011085e2a7cde3f437"
                             target="_blank" rel="noopener noreferrer"
-                            className="font-mono text-[10px] text-[#00D2FF] hover:underline tracking-widest">
+                            className="font-mono text-[10px] text-electric-cyan hover:underline tracking-widest">
                             UPWORK ↗
                         </a>
                         <a href="https://www.manager.io/advisors"
                             target="_blank" rel="noopener noreferrer"
-                            className="font-mono text-[10px] text-[#FFD700] hover:underline tracking-widest">
+                            className="font-mono text-[10px] text-action-gold hover:underline tracking-widest">
                             MANAGER.IO ↗
                         </a>
                     </div>

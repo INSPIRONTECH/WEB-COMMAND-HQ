@@ -11,6 +11,7 @@ const NAV_LINKS = [
     { href: '/services', label: 'Services' },
     { href: '/case-studies', label: 'Case Studies' },
     { href: '/pricing', label: 'Pricing' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
 ];
 
@@ -44,10 +45,10 @@ export const GlobalHeader = () => {
                     {/* Mobile hamburger */}
                     <button
                         onClick={() => setMenuOpen(true)}
-                        className={`md:hidden w-10 h-10 border border-[#00D2FF]/30 bg-[#010409]/90
+                        className={`md:hidden w-11 h-11 border border-electric-cyan/30 bg-deep-navy-black/90
                         items-center justify-center haptic-button rounded-lg
                         ${menuOpen ? 'hidden' : 'flex'}`}>
-                        <Menu size={20} className="text-[#00D2FF]" />
+                        <Menu size={20} className="text-electric-cyan" />
                     </button>
                 </div>
             </nav>

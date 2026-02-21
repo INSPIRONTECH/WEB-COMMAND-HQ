@@ -8,6 +8,12 @@ import { X, ChevronRight, ChevronDown, Wifi, Shield, Zap } from 'lucide-react';
 
 const navTree = [
     {
+        label: '[+] ROOT',
+        children: [
+            { href: '/', label: '/root_index' },
+        ],
+    },
+    {
         label: '[+] PROTOCOLS',
         children: [
             { href: '/services', label: '/services' },
@@ -25,8 +31,8 @@ const navTree = [
 ];
 
 const systemStatus = [
-    { icon: Wifi, label: 'SYSTEM', value: 'ONLINE', color: 'text-[#00D2FF]' },
-    { icon: Shield, label: 'N-LAW', value: 'ACTIVE', color: 'text-[#FFD700]' },
+    { icon: Wifi, label: 'SYSTEM', value: 'ONLINE', color: 'text-electric-cyan' },
+    { icon: Shield, label: 'N-LAW', value: 'ACTIVE', color: 'text-action-gold' },
     { icon: Zap, label: 'ADVISOR', value: 'LIVE', color: 'text-green-400' },
 ];
 
@@ -58,14 +64,14 @@ export const TerminalDatapad = ({
                         animate={{ x: 0 }}
                         exit={{ x: '-100%' }}
                         transition={{ ease: 'circOut', duration: 0.25 }}
-                        className="w-[85vw] h-full bg-[#010409] border-r-2
-                       border-[#00D2FF]/20 flex flex-col overflow-hidden">
+                        className="w-[85vw] h-full bg-deep-navy-black border-r-2
+                       border-electric-cyan/20 flex flex-col overflow-hidden">
 
                         {/* Header */}
                         <div className="flex items-center justify-between px-5 py-4
-                            border-b-2 border-[#00D2FF]/20 font-mono">
+                            border-b-2 border-electric-cyan/20 font-mono">
                             <div>
-                                <p className="text-[#00D2FF] text-[10px] font-black tracking-widest uppercase">
+                                <p className="text-electric-cyan text-[10px] font-black tracking-widest uppercase">
                                     INSPIRON_TECH//NAV.SYS
                                 </p>
                                 <p className="text-white/30 text-[8px] tracking-widest mt-0.5">
@@ -106,8 +112,8 @@ export const TerminalDatapad = ({
                                     <button
                                         onClick={() => setExpanded(expanded === group.label ? null : group.label)}
                                         className="w-full flex items-center justify-between px-2 py-2.5
-                               text-[#00D2FF] text-[11px] font-black tracking-wider
-                               hover:bg-[#00D2FF]/5 rounded transition-colors haptic-button">
+                               text-electric-cyan text-[11px] font-black tracking-wider
+                               hover:bg-electric-cyan/5 rounded transition-colors haptic-button">
                                         <span>{group.label}</span>
                                         {expanded === group.label
                                             ? <ChevronDown size={12} />
@@ -115,13 +121,13 @@ export const TerminalDatapad = ({
                                     </button>
 
                                     {expanded === group.label && (
-                                        <div className="ml-4 border-l border-[#00D2FF]/20 pl-3 space-y-1 mt-1">
+                                        <div className="ml-4 border-l border-electric-cyan/20 pl-3 space-y-1 mt-1">
                                             {group.children.map(({ href, label }) => (
                                                 <Link key={href} href={href} onClick={onClose}
                                                     className={`block py-2 text-[11px] tracking-widest transition-colors
                             ${pathname === href
-                                                            ? 'text-[#00D2FF]'
-                                                            : 'text-white/50 hover:text-[#00D2FF]'}`}>
+                                                            ? 'text-electric-cyan'
+                                                            : 'text-white/50 hover:text-electric-cyan'}`}>
                                                     {label}
                                                 </Link>
                                             ))}
@@ -129,16 +135,10 @@ export const TerminalDatapad = ({
                                     )}
                                 </div>
                             ))}
-
-                            <Link href="/" onClick={onClose}
-                                className={`block px-2 py-2.5 text-[11px] tracking-widest transition-colors
-                  ${pathname === '/' ? 'text-[#FFD700]' : 'text-white/50 hover:text-[#FFD700]'}`}>
-                                /root
-                            </Link>
                         </div>
 
                         {/* CTA */}
-                        <div className="px-5 py-5 border-t-2 border-[#FFD700]/20">
+                        <div className="px-5 py-5 border-t-2 border-action-gold/20">
                             <a href="https://wa.me/8801719300849"
                                 className="gold-racer haptic-button w-full py-4 rounded-xl
                            text-[10px] font-black tracking-widest uppercase
