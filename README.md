@@ -11,7 +11,13 @@
 ██║██║╚██╗██║╚════██║██╔═══╝ ██║██╔══██╗██║   ██║██║╚██╗██║
 ██║██║ ╚████║███████║██║     ██║██║  ██║╚██████╔╝██║ ╚████║
 ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-T E C H  ·  W E B - C O M M A N D - H Q
+
+████████╗███████╗ ██████╗██╗  ██╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║
+   ██║   █████╗  ██║     ███████║
+   ██║   ██╔══╝  ██║     ██╔══██║
+   ██║   ███████╗╚██████╗██║  ██║
+   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
 ```
 
 **"I do not install software. I architect logic."**
@@ -23,7 +29,7 @@ T E C H  ·  W E B - C O M M A N D - H Q
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38BDF8?style=for-the-badge&logo=tailwindcss&labelColor=010409)](https://tailwindcss.com)
 [![Deploy](https://img.shields.io/badge/Vercel-DEPLOYED-FFD700?style=for-the-badge&logo=vercel&labelColor=010409)](https://vercel.com/inspirontech)
 
-**Architect:** MD ABU HASAN · Official Manager.io Partner · DHAKA, BD · BASIS Registered
+**Architect:** MD ABU HASAN · Official Manager.io Partner · DHAKA, BD
 
 </div>
 
@@ -74,9 +80,6 @@ WEB-COMMAND-HQ/
 │   │   ├── privacy/                 # /privacy
 │   │   └── services/                # /services
 │   │
-│   ├── social-assets/               # /social-assets · Brand Factory (standalone HUD)
-│   │   └── page.tsx
-│   │
 │   ├── api/                         # API Routes
 │   ├── globals.css                  # Global styles + custom utility classes
 │   ├── icon.png                     # System favicon (source of truth)
@@ -120,7 +123,6 @@ WEB-COMMAND-HQ/
 | `/precision-audit` | **Public** | Case study evidence vault |
 | `/audit-vault` | **Public** | Gated sales asset |
 | `/client-feedback` | **Public** | Client testimonial archive |
-| `/social-assets` | **Internal** | Brand Factory v2.12 — social image generator |
 | `/privacy` | **Legal** | Privacy protocol |
 
 ---
@@ -167,8 +169,6 @@ This is the **only** component authorised to render the INSPIRON TECH logotype. 
 
 All public routes use this group. The layout wraps every child with `<GlobalHeader />` + `<main className="pt-24">` + `<GlobalFooter />`.
 
-`/social-assets` is intentionally **outside** this group — it is a standalone internal tool with its own HUD navigation.
-
 ---
 
 ## 07 · Local Development
@@ -203,7 +203,7 @@ Auto-deployed via **Vercel** on every push to `main`.
 
 | Environment | URL |
 |---|---|
-| Production | [inspirontech.vercel.app](https://vercel.com/inspirontech) |
+| Production | [inspiron.tech](https://inspiron.tech) |
 | Dev | `localhost:3000` |
 
 No environment variables required for baseline operation. API routes (if active) may require `.env.local` — see `app/api/` for specifics.
@@ -246,8 +246,6 @@ refactor(nav):     # Navigation refactor
 | **WhatsApp** | [+880 1719-300849](https://wa.me/8801719300849) |
 | **Upwork** | [upwork.com/freelancers/~011085e2a7cde3f437](https://www.upwork.com/freelancers/~011085e2a7cde3f437) |
 | **Manager.io** | [manager.io/advisors](https://www.manager.io/advisors) |
-| **Trade Reg.** | TRADE-DSCC-0045632025 |
-| **BASIS** | Registered Member |
 
 ---
 
@@ -255,7 +253,7 @@ refactor(nav):     # Navigation refactor
 
 ```
 © 2026 INSPIRON TECH · ALL LOGIC ARCHITECTED IN DHAKA, BD
-OFFICIAL MANAGER.IO PARTNER · BASIS REGISTERED · UTC+06
+OFFICIAL MANAGER.IO PARTNER · UTC+06
 ```
 
 </div>
