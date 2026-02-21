@@ -152,7 +152,7 @@ const SimulationLab = () => {
             </div>
 
             {/* Viewport */}
-            <div className={`relative h-[500px] flex items-center justify-center transition-colors duration-500 ${bgMode === 'light' ? 'bg-slate-100' : bgMode === 'dark' ? 'bg-[#00152e]' : 'bg-[#002147]'}`}>
+            <div className={`relative h-[300px] sm:h-[400px] md:h-[500px] flex items-center justify-center transition-colors duration-500 ${bgMode === 'light' ? 'bg-slate-100' : bgMode === 'dark' ? 'bg-[#00152e]' : 'bg-[#002147]'}`}>
                 {bgMode === 'blueprint' && <div className="absolute inset-0 blueprint-grid opacity-20"></div>}
 
                 <div style={{ transform: `scale(${scale})` }} className="transition-transform duration-300 relative z-10">
@@ -179,6 +179,7 @@ export default function NLawStandards() {
     const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 });
     const [isHoveringLogo, setIsHoveringLogo] = useState(false);
     const [showAnimation, setShowAnimation] = useState(false);
+    const [weightSliderVal, setWeightSliderVal] = useState(500);
 
     // Trigger animation on mount
     useEffect(() => {
@@ -196,6 +197,16 @@ export default function NLawStandards() {
         const x = ((e.clientX - rect.left) / rect.width) * viewBox.width;
         const y = ((e.clientY - rect.top) / rect.height) * viewBox.height;
 
+        setMouseCoords({ x: Math.round(x * 1000) / 1000, y: Math.round(y * 1000) / 1000 });
+    };
+
+    const handleTouchMove = (e: React.TouchEvent<SVGSVGElement>) => {
+        const touch = e.touches[0];
+        const svg = e.currentTarget;
+        const rect = svg.getBoundingClientRect();
+        const viewBox = svg.viewBox.baseVal;
+        const x = ((touch.clientX - rect.left) / rect.width) * viewBox.width;
+        const y = ((touch.clientY - rect.top) / rect.height) * viewBox.height;
         setMouseCoords({ x: Math.round(x * 1000) / 1000, y: Math.round(y * 1000) / 1000 });
     };
 
@@ -251,14 +262,14 @@ export default function NLawStandards() {
             <main className="pb-32">
 
                 {/* BACK TO HOME */}
-                <div className="pt-24 px-10">
+                <div className="pt-24 px-4 md:px-8 lg:px-10">
                     <Link href="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#00D2FF] transition text-sm">
                         <ArrowLeft size={14} /> Back to Home
                     </Link>
                 </div>
 
                 {/* 00. INTRO SECTION: BRAND VISION */}
-                <section id="vision" className="pt-48 pb-32 px-10 text-center max-w-6xl mx-auto space-y-8 bg-[#010409] blueprint-grid border-b border-white/5 rounded-b-[4rem] shadow-sm relative overflow-hidden">
+                <section id="vision" className="pt-16 md:pt-32 lg:pt-48 pb-16 md:pb-28 lg:pb-32 px-4 md:px-8 lg:px-10 text-center max-w-6xl mx-auto space-y-8 bg-[#010409] blueprint-grid border-b border-white/5 rounded-b-[4rem] shadow-sm relative overflow-hidden">
                     <div className="space-y-6 max-w-3xl mx-auto relative z-10">
 
                         <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.85]">Institutional Equilibrium</h1>
@@ -273,7 +284,7 @@ export default function NLawStandards() {
                 </section>
 
                 {/* 01. GEOMETRIC ANATOMY */}
-                <section id="anatomy" className="py-40 px-8 max-w-7xl mx-auto space-y-24">
+                <section id="anatomy" className="py-16 md:py-28 lg:py-40 px-4 md:px-8 max-w-7xl mx-auto space-y-24">
                     <div className="space-y-6 max-w-2xl border-l-[8px] border-[#FFD700] pl-10">
                         <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none">01. Geometric Anatomy</h2>
                         <p className="text-slate-500 text-lg md:text-xl font-light leading-relaxed">
@@ -282,7 +293,7 @@ export default function NLawStandards() {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        <div className="bg-[#002147]/50 rounded-[5rem] p-20 md:p-32 relative overflow-hidden group shadow-[0_40px_80px_-20px_rgba(0,33,71,0.3)] border border-white/5">
+                        <div className="bg-[#002147]/50 rounded-[2rem] md:rounded-[5rem] p-6 sm:p-12 md:p-20 lg:p-32 relative overflow-hidden group shadow-[0_40px_80px_-20px_rgba(0,33,71,0.3)] border border-white/5">
                             <div className="absolute inset-0 blueprint-grid opacity-10"></div>
 
                             {/* SVG-NATIVE PRECISION AUDIT WITH ANIMATION (EXACT 321.346 COORDINATE) */}
@@ -293,6 +304,9 @@ export default function NLawStandards() {
                                     onMouseMove={handleMouseMove}
                                     onMouseEnter={() => setIsHoveringLogo(true)}
                                     onMouseLeave={() => setIsHoveringLogo(false)}
+                                    onTouchMove={handleTouchMove}
+                                    onTouchStart={() => setIsHoveringLogo(true)}
+                                    onTouchEnd={() => setIsHoveringLogo(false)}
                                 >
                                     {/* MAIN LOGO GEOMETRY WITH ANIMATION */}
                                     <defs>
@@ -482,9 +496,9 @@ export default function NLawStandards() {
                 </section>
 
                 {/* 02. TYPOGRAPHIC HUB */}
-                <section id="typography" className="py-40 bg-[#00152e] relative overflow-hidden border-y border-white/5">
+                <section id="typography" className="py-16 md:py-28 lg:py-40 bg-[#00152e] relative overflow-hidden border-y border-white/5">
                     <div className="absolute inset-0 blueprint-grid opacity-5"></div>
-                    <div className="max-w-6xl mx-auto px-10 space-y-32 relative z-20">
+                    <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-10 space-y-32 relative z-20">
                         <div className="text-center space-y-4 max-w-2xl mx-auto">
                             <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">02. Typographic Hub</h2>
                             <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
@@ -492,25 +506,25 @@ export default function NLawStandards() {
                             </p>
                         </div>
 
-                        <div className="bg-white/[0.02] rounded-[5rem] p-24 md:p-36 border border-white/10 backdrop-blur-md flex flex-col items-center shadow-2xl">
+                        <div className="bg-white/[0.02] rounded-[2rem] md:rounded-[5rem] p-6 sm:p-10 md:p-24 lg:p-36 border border-white/10 backdrop-blur-md flex flex-col items-center shadow-2xl">
                             {/* THE MASTER LOCKUP (OLED MAGNIFICATION) */}
-                            <div className="flex flex-col md:flex-row items-center gap-16 transition-all duration-1000 hover:scale-[1.02] group">
+                            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-16 transition-all duration-1000 hover:scale-[1.02] group">
                                 <div className="w-32 h-32 md:w-44 md:h-44 text-[#00D2FF] glow-cyan">
                                     <MasterLockup />
                                 </div>
                                 <div className="flex items-baseline leading-none pt-4">
-                                    <span className="text-7xl md:text-[12rem] font-medium lowercase text-white tracking-tighter">inspiron</span>
-                                    <span className="text-6xl md:text-[10rem] font-light uppercase text-[#FFD700] ml-6 tracking-[0.1em] group-hover:tracking-[0.18em] transition-all duration-1000">TECH</span>
+                                    <span className="text-4xl sm:text-6xl md:text-[12rem] font-medium lowercase text-white tracking-tighter">inspiron</span>
+                                    <span className="text-3xl sm:text-5xl md:text-[10rem] font-light uppercase text-[#FFD700] ml-6 tracking-[0.1em] group-hover:tracking-[0.18em] transition-all duration-1000">TECH</span>
                                 </div>
                             </div>
 
                             <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl">
-                                <div className="p-12 rounded-[3.5rem] bg-white/[0.03] border border-white/5 space-y-4">
+                                <div className="p-6 md:p-12 rounded-[1.5rem] md:rounded-[3.5rem] bg-white/[0.03] border border-white/5 space-y-4">
                                     <span className="text-[10px] font-bold text-[#00D2FF] uppercase tracking-[0.4em]">Node A: Medium Identifier</span>
                                     <div className="text-4xl font-medium lowercase text-white">Neo Sans Medium</div>
                                     <p className="text-sm text-slate-500 leading-relaxed font-light">The core brand anchor. Corrected shoulder tangency for the 'r' ensures visual fluidity on 4K displays. Verified at weight 500.</p>
                                 </div>
-                                <div className="p-12 rounded-[3.5rem] bg-white/[0.03] border border-white/5 space-y-4">
+                                <div className="p-6 md:p-12 rounded-[1.5rem] md:rounded-[3.5rem] bg-white/[0.03] border border-white/5 space-y-4">
                                     <span className="text-[10px] font-bold text-[#FFD700] uppercase tracking-[0.4em]">Node B: Light Sector</span>
                                     <div className="text-4xl font-light uppercase text-white">Institutional Tech</div>
                                     <p className="text-sm text-slate-500 leading-relaxed font-light">Technical precision node. Rendered at weight 300 to provide visual depth and hierarchical contrast against the primary lockup.</p>
@@ -518,11 +532,11 @@ export default function NLawStandards() {
                             </div>
 
                             {/* INTERACTIVE TYPOGRAPHY WEIGHT SLIDER */}
-                            <div className="mt-20 w-full max-w-4xl p-12 rounded-[4rem] bg-[#00D2FF]/5 border border-[#00D2FF]/20">
+                            <div className="mt-20 w-full max-w-4xl p-6 md:p-12 rounded-[1.5rem] md:rounded-[4rem] bg-[#00D2FF]/5 border border-[#00D2FF]/20">
                                 <h4 className="text-xs font-bold uppercase tracking-[0.5em] text-[#00D2FF] mb-8">Interactive Weight Verification</h4>
                                 <div className="space-y-8">
                                     <div className="flex items-center justify-between gap-8">
-                                        <span className="text-sm font-mono text-slate-400 w-32">Weight: {Math.round((500))}</span>
+                                        <span className="text-sm font-mono text-slate-400 w-32">Weight: {weightSliderVal}</span>
                                         <input
                                             type="range"
                                             min="300"
@@ -531,10 +545,9 @@ export default function NLawStandards() {
                                             defaultValue="500"
                                             className="flex-1 h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00D2FF] [&::-webkit-slider-thumb]:cursor-pointer"
                                             onChange={(e) => {
+                                                setWeightSliderVal(parseInt(e.target.value));
                                                 const preview = e.target.parentElement?.nextElementSibling;
                                                 if (preview) (preview as HTMLElement).style.fontWeight = e.target.value;
-                                                const label = e.target.previousElementSibling;
-                                                if (label) label.textContent = `Weight: ${e.target.value}`;
                                             }}
                                         />
                                         <span className="text-sm font-mono text-slate-400 w-24 text-right">Standard</span>
@@ -560,7 +573,7 @@ export default function NLawStandards() {
                             </div>
 
                             {/* BRAND COLOR SYSTEM */}
-                            <div className="mt-12 w-full max-w-4xl p-12 rounded-[4rem] bg-[#FFD700]/5 border border-[#FFD700]/20">
+                            <div className="mt-12 w-full max-w-4xl p-6 md:p-12 rounded-[1.5rem] md:rounded-[4rem] bg-[#FFD700]/5 border border-[#FFD700]/20">
                                 <h4 className="text-xs font-bold uppercase tracking-[0.5em] text-[#FFD700] mb-8">Brand Color System</h4>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="p-6 bg-white/5 rounded-2xl border border-[#FFD700]/30 space-y-3">
@@ -590,9 +603,9 @@ export default function NLawStandards() {
 
 
                 {/* 03. LIVE SIMULATION LAB */}
-                <section id="simulation" className="py-40 bg-[#010409] relative overflow-hidden border-y border-white/5">
+                <section id="simulation" className="py-16 md:py-28 lg:py-40 bg-[#010409] relative overflow-hidden border-y border-white/5">
                     <div className="absolute inset-0 blueprint-grid opacity-5"></div>
-                    <div className="max-w-6xl mx-auto px-10 space-y-20 relative z-20">
+                    <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-10 space-y-20 relative z-20">
                         <div className="text-center space-y-4 max-w-2xl mx-auto">
                             <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">03. Simulation Lab</h2>
                             <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
@@ -607,14 +620,14 @@ export default function NLawStandards() {
 
 
                 {/* 04. PRODUCTION ASSET EXPORT */}
-                <section className="py-40 bg-[#010409] relative overflow-hidden border-t border-white/5">
+                <section className="py-16 md:py-28 lg:py-40 bg-[#010409] relative overflow-hidden border-t border-white/5">
                     <div className="absolute inset-0 blueprint-grid opacity-10"></div>
-                    <div className="max-w-4xl mx-auto px-10 relative z-20 text-center space-y-14">
+                    <div className="max-w-4xl mx-auto px-4 md:px-8 lg:px-10 relative z-20 text-center space-y-14">
                         <div className="space-y-4">
                             <h3 className="text-[#00D2FF] font-mono text-[12px] tracking-[0.7em] uppercase">MIGRATION VAULT ASSET</h3>
                             <p className="text-white text-4xl font-black uppercase tracking-tighter">Geometric Master Export</p>
                         </div>
-                        <div className="bg-white/[0.02] p-14 rounded-[5rem] border border-white/10 backdrop-blur-3xl group shadow-[0_0_120px_rgba(0,0,0,0.6)]">
+                        <div className="bg-white/[0.02] p-6 md:p-14 rounded-[2rem] md:rounded-[5rem] border border-white/10 backdrop-blur-3xl group shadow-[0_0_120px_rgba(0,0,0,0.6)]">
                             <pre className="text-[#00D2FF] text-[12px] leading-relaxed overflow-x-auto text-left custom-scroll max-h-[400px] font-mono p-6 bg-black/40 rounded-3xl border border-white/5">
                                 {`<!-- INSPIRON TECH // MASTER ASSET REV 2026.1 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358.846 350.3">
@@ -639,7 +652,7 @@ export default function NLawStandards() {
                 </section>
 
                 {/* FINAL CTA: n-LAW GRID (LEGACY RE-INTEGRATED) */}
-                <section className="py-40 bg-[#00152e] border-t border-white/5 px-10">
+                <section className="py-16 md:py-28 lg:py-40 bg-[#00152e] border-t border-white/5 px-4 md:px-8 lg:px-10">
                     <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
                         <LawCard
                             number="01"
@@ -679,7 +692,7 @@ export default function NLawStandards() {
 
 function LawCard({ number, title, icon, content, color }: any) {
     return (
-        <div className={`group relative p-12 bg-white/[0.02] border-t-4 ${color} hover:bg-white/[0.05] transition-all duration-500 rounded-b-3xl border-x border-b border-white/5`}>
+        <div className={`group relative p-6 md:p-12 bg-white/[0.02] border-t-4 ${color} hover:bg-white/[0.05] transition-all duration-500 rounded-b-3xl border-x border-b border-white/5`}>
             <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
                 <span className="text-6xl font-black text-white stroke-text">{number}</span>
             </div>
