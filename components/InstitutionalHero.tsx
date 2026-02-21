@@ -40,13 +40,13 @@ export const InstitutionalHero = () => {
                 </div>
 
                 {/* Main Headline — Plain Language */}
-                <h1 className="font-institutional text-4xl md:text-7xl lg:text-8xl font-medium text-institutional-white uppercase tracking-tighter leading-[0.9] mb-8">
+                <h1 className="font-institutional text-[2.75rem] leading-[0.95] md:text-7xl lg:text-8xl font-medium text-institutional-white uppercase tracking-tighter mb-6 md:mb-8">
                     I Don't Install Software.<br />
                     <span className="text-action-gold">I Architect Logic.</span>
                 </h1>
 
                 {/* Subtitle — What you actually do, in human language */}
-                <p className="font-institutional text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-6 leading-relaxed font-light">
+                <p className="font-institutional text-base md:text-2xl text-gray-400 max-w-3xl mx-auto mb-6 md:mb-6 leading-relaxed font-light">
                     14+ years inside manufacturing plants, ISP control rooms, and medical warehouses — before founding Bangladesh's only Official Manager.io practice.
                 </p>
 

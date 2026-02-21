@@ -200,54 +200,6 @@ export default function CaseStudiesPage() {
                 </div>
             </section>
 
-            {/* FOOTER - INLINE (Temporary until SharedFooter) */}
-            <footer className="py-16 border-t border-white/5 px-8 bg-deep-navy-black">
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div className="text-center md:text-left">
-                            <p className="font-institutional text-gray-400 font-light">
-                                <span className="text-action-gold font-bold">MD ABU HASAN</span> · Founder & Chief Architect, INSPIRON TECH
-                            </p>
-                            <p className="text-gray-600 text-sm mt-1">
-                                Official Manager.io Partner · Dhaka 1217, Bangladesh
-                            </p>
-                        </div>
-
-                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
-                            <Link href="/services" className="hover:text-electric-cyan transition-colors">Services</Link>
-                            <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
-                            <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
-                            <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
-                            <Link href="/client-feedback" className="hover:text-electric-cyan transition-colors">Client Feedback</Link>
-                            <Link href="/privacy" className="hover:text-electric-cyan transition-colors">Privacy</Link>
-                        </div>
-                    </div>
-
-                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <a
-                            href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-electric-cyan text-sm hover:underline"
-                        >
-                            Verify on Upwork ↗
-                        </a>
-                        <a href="https://forum.manager.io/u/abu_hasan"
-                            target="_blank"
-                            className="text-electric-cyan text-sm hover:underline">
-                            Active on Manager.io Forum ↗
-                        </a>
-                        <a
-                            href="https://www.manager.io/advisors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-action-gold text-sm hover:underline"
-                        >
-                            Verify on Manager.io ↗
-                        </a>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }

@@ -16,7 +16,7 @@ export default function LandingPage() {
             <InstitutionalHero />
 
             {/* HERO POSITIONING */}
-            <section className="py-12 px-8 border-b border-white/5">
+            <section className="py-12 px-5 md:px-8 border-b border-white/5">
                 <div className="max-w-4xl mx-auto text-center">
                     <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light">
                         At INSPIRON TECH, we implement Manager.io as the core of your financial
@@ -28,32 +28,33 @@ export default function LandingPage() {
             </section>
 
             {/* WHY CHOOSE US — Real reasons, not jargon */}
-            <section id="why-us" className="py-32 border-y border-white/5 px-8">
+            <section id="why-us" className="py-24 md:py-32 border-y border-white/5 px-5 md:px-8">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="font-institutional text-3xl md:text-5xl font-medium text-center uppercase tracking-tight mb-4">
                         Why Businesses Choose Us
                     </h2>
-                    <p className="text-gray-500 text-center text-lg mb-16 max-w-2xl mx-auto">
+                    <p className="text-gray-500 text-center text-lg mb-12 md:mb-16 max-w-2xl mx-auto">
                         We don&apos;t just install software. We understand your business first, then build the right solution.
                     </p>
 
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="p-12 bg-white/5 border border-white/10 rounded-[40px] hover:border-action-gold/50 transition-all group">
-                            <Users className="text-action-gold mb-8 group-hover:scale-110 transition" size={40} />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 relative">
+                        {/* Mobile Stack Selectors (Brutalist Separation) */}
+                        <div className="p-8 md:p-12 bg-white/5 border-2 md:border border-white/10 md:border-white/10 rounded-[32px] md:rounded-[40px] hover:border-action-gold/50 transition-all group">
+                            <Users className="text-action-gold mb-6 md:mb-8 group-hover:scale-110 transition" size={40} />
                             <h3 className="font-institutional text-2xl font-bold uppercase mb-4">We Listen First</h3>
                             <p className="text-gray-400 text-sm leading-relaxed font-light">
                                 We spend 10–20 hours understanding your workflow, staff capabilities, and real challenges before proposing anything.
                             </p>
                         </div>
-                        <div className="p-12 bg-white/5 border border-white/10 rounded-[40px] hover:border-electric-cyan/50 transition-all group">
-                            <Building2 className="text-electric-cyan mb-8 group-hover:scale-110 transition" size={40} />
+                        <div className="p-8 md:p-12 bg-white/5 border-2 md:border border-white/10 md:border-white/10 rounded-[32px] md:rounded-[40px] hover:border-electric-cyan/50 transition-all group">
+                            <Building2 className="text-electric-cyan mb-6 md:mb-8 group-hover:scale-110 transition" size={40} />
                             <h3 className="font-institutional text-2xl font-bold uppercase mb-4">Every Industry</h3>
                             <p className="text-gray-400 text-sm leading-relaxed font-light">
                                 Aquaculture, footwear groups, trims & printing, GP/bKash distribution, govt tenders, medical devices, cooperatives — if it has a workflow, we&apos;ve architected it on Manager.io.
                             </p>
                         </div>
-                        <div className="p-12 bg-white/5 border border-white/10 rounded-[40px] hover:border-white/50 transition-all group">
-                            <HeadphonesIcon className="text-institutional-white mb-8 group-hover:scale-110 transition" size={40} />
+                        <div className="p-8 md:p-12 bg-white/5 border-2 md:border border-white/10 md:border-white/10 rounded-[32px] md:rounded-[40px] hover:border-white/50 transition-all group">
+                            <HeadphonesIcon className="text-institutional-white mb-6 md:mb-8 group-hover:scale-110 transition" size={40} />
                             <h3 className="font-institutional text-2xl font-bold uppercase mb-4">Support That Lasts</h3>
                             <p className="text-gray-400 text-sm leading-relaxed font-light">
                                 After delivery, we stay available. Whenever you forget something or face a new situation, we adjust and support again.
@@ -64,7 +65,7 @@ export default function LandingPage() {
             </section>
 
             {/* INDUSTRIES SERVED — Show real breadth */}
-            <section className="py-24 px-8 bg-white/[0.02]">
+            <section className="py-24 px-5 md:px-8 bg-white/[0.02]">
                 <div className="max-w-6xl mx-auto text-center">
                     <h2 className="font-institutional text-2xl md:text-4xl font-medium uppercase tracking-tight mb-12">
                         Industries We&apos;ve Architected
@@ -101,7 +102,7 @@ export default function LandingPage() {
             </section>
 
             {/* SOCIAL PROOF — Real, verifiable */}
-            <section className="py-24 px-8 border-t border-white/5">
+            <section className="py-24 px-5 md:px-8 border-t border-white/5">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="grid md:grid-cols-4 gap-8 mb-16">
                         <div>
@@ -152,7 +153,7 @@ export default function LandingPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 px-8 bg-gradient-to-t from-electric-cyan/[0.03] to-transparent">
+            <section className="py-20 px-5 md:px-8 bg-gradient-to-t from-electric-cyan/[0.03] to-transparent">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="font-institutional text-3xl md:text-5xl font-medium uppercase tracking-tight mb-6">
                         Ready to Get Started?
@@ -169,50 +170,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* FOOTER */}
-            <footer className="py-16 border-t border-white/5 px-8">
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div className="text-center md:text-left">
-                            <p className="font-institutional text-gray-400 font-light">
-                                <span className="text-action-gold font-bold">MD ABU HASAN</span> · Founder & Chief Architect, INSPIRON TECH
-                            </p>
-                            <p className="text-gray-600 text-sm mt-1">
-                                Official Manager.io Partner · Dhaka 1217, Bangladesh
-                            </p>
-                        </div>
-
-                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
-                            <Link href="/about" className="hover:text-electric-cyan transition-colors">About</Link>
-                            <Link href="/services" className="hover:text-electric-cyan transition-colors">Services</Link>
-                            <Link href="/case-studies" className="hover:text-electric-cyan transition-colors">Case Studies</Link>
-                            <Link href="/pricing" className="hover:text-electric-cyan transition-colors">Pricing</Link>
-                            <Link href="/contact" className="hover:text-electric-cyan transition-colors">Contact</Link>
-                            <Link href="/client-feedback" className="hover:text-electric-cyan transition-colors">Client Feedback</Link>
-                            <Link href="/privacy" className="hover:text-electric-cyan transition-colors">Privacy</Link>
-                        </div>
-                    </div>
-
-                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <a
-                            href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-electric-cyan text-sm hover:underline"
-                        >
-                            Verify on Upwork ↗
-                        </a>
-                        <a
-                            href="https://www.manager.io/advisors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-action-gold text-sm hover:underline"
-                        >
-                            Verify on Manager.io ↗
-                        </a>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }

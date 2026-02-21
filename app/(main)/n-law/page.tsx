@@ -673,36 +673,6 @@ export default function NLawStandards() {
                 </section>
             </main>
 
-            {/* SITE FOOTER */}
-            <footer className="py-16 border-t border-white/5 px-8 bg-[#010409]">
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div className="text-center md:text-left">
-                            <p className="text-gray-400 font-light">
-                                <span className="text-[#FFD700] font-bold">MD ABU HASAN</span> · Founder, INSPIRON TECH
-                            </p>
-                            <p className="text-gray-600 text-sm mt-1">
-                                Official Manager.io Partner · Dhaka 1217, Bangladesh
-                            </p>
-                        </div>
-                        <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
-                            <Link href="/" className="hover:text-[#00D2FF] transition-colors">Home</Link>
-                            <Link href="/services" className="hover:text-[#00D2FF] transition-colors">Services</Link>
-                            <Link href="/case-studies" className="hover:text-[#00D2FF] transition-colors">Case Studies</Link>
-                            <Link href="/pricing" className="hover:text-[#00D2FF] transition-colors">Pricing</Link>
-                            <Link href="/contact" className="hover:text-[#00D2FF] transition-colors">Contact</Link>
-                            <Link href="/privacy" className="hover:text-[#00D2FF] transition-colors">Privacy</Link>
-                        </div>
-                    </div>
-                    <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-600 text-xs">© 2026 Inspiron Tech BD</p>
-                        <div className="flex gap-4">
-                            <a href="https://www.upwork.com/freelancers/~011085e2a7cde3f437?viewMode=1" target="_blank" rel="noopener noreferrer" className="text-[#00D2FF] text-sm hover:underline">Verify on Upwork ↗</a>
-                            <a href="https://www.manager.io/advisors" target="_blank" rel="noopener noreferrer" className="text-[#FFD700] text-sm hover:underline">Verify on Manager.io ↗</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div >
     );
 }
