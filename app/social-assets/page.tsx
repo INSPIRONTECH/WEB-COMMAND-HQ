@@ -83,6 +83,24 @@ const MODE_SCALES: Record<ActiveMode, number> = {
 
 
 
+// ─── SHARED UI PRIMITIVES ──────────────────────────────────────────────────
+const TechInput = ({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) => (
+    <div className="space-y-1 group">
+        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold font-mono group-hover:text-electric-cyan transition-colors">{label}</label>
+        <input type="text" value={value} onChange={e => onChange(e.target.value)} spellCheck={false}
+            className="w-full bg-black/40 border border-white/10 rounded px-3 py-3 text-xs text-white focus:outline-none focus:border-electric-cyan focus:bg-electric-cyan/5 font-mono transition-all" />
+    </div>
+);
+
+const TechTextArea = ({ label, value, onChange, rows }: { label: string; value: string; onChange: (v: string) => void; rows: number }) => (
+    <div className="space-y-1 group">
+        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold font-mono group-hover:text-electric-cyan transition-colors">{label}</label>
+        <textarea value={value} onChange={e => onChange(e.target.value)} rows={rows} spellCheck={false}
+            className="w-full bg-black/40 border border-white/10 rounded px-3 py-3 text-xs text-white focus:outline-none focus:border-electric-cyan focus:bg-electric-cyan/5 font-mono transition-all resize-none" />
+    </div>
+);
+
+
 export default function SocialAssetsPage() {
 
     // ─── STATE ARCHITECTURE ─────────────────────────────────────────────────
@@ -109,7 +127,6 @@ export default function SocialAssetsPage() {
     });
 
     const [facebookData, setFacebookData] = useState({
-        variant: 'personal' as 'personal' | 'page' | 'group',
         badge: "Official Manager.io Advisor",
         headline: "Institutional-Grade\nFinancial Architecture",
         subtext: "We don't have account managers. We have architects.",
@@ -134,13 +151,20 @@ export default function SocialAssetsPage() {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            setIsMac(navigator.platform.includes('Mac'));
+            setIsMac(navigator.userAgent.includes('Mac') || navigator.userAgent.includes('Macintosh'));
         }
     }, []);
 
     const [profileData, setProfileData] = useState({
         initials: "IT",
         role: "Chief Architect",
+    });
+
+    const [instagramData, setInstagramData] = useState({
+        headline: "Deploy Your",
+        highlight: "Architecture",
+        subtext: "We architect the accounting logic other consultants walk away from.",
+        cta: "inspiron.tech/architect",
     });
 
     const [auditState, setAuditState] = useState({
@@ -215,7 +239,7 @@ export default function SocialAssetsPage() {
                         </div>
                     </div>
                     <div className="flex gap-1 bg-white/5 p-1 rounded-lg border border-white/5 overflow-x-auto scrollbar-none">
-                        {(PLATFORMS as unknown as any[]).map((mode) => (
+                        {(PLATFORMS as readonly typeof PLATFORMS[number][]).map((mode) => (
                             <button
                                 key={mode.id}
                                 onClick={() => setActiveMode(mode.id)}
@@ -274,6 +298,8 @@ export default function SocialAssetsPage() {
                                     <TechInput label="Metric 2 Val" value={linkedinData.metric2Val} onChange={v => setLinkedinData({ ...linkedinData, metric2Val: v })} />
                                     <TechInput label="Metric 2 Lbl" value={linkedinData.metric2Lbl} onChange={v => setLinkedinData({ ...linkedinData, metric2Lbl: v })} />
                                 </div>
+                                <div className="h-px bg-white/10" />
+                                <TechInput label="Website / CTA" value={linkedinData.website} onChange={v => setLinkedinData({ ...linkedinData, website: v })} />
                             </div>
                         )}
 
@@ -283,7 +309,7 @@ export default function SocialAssetsPage() {
                                 <div className="grid grid-cols-3 gap-2 mb-4">
                                     {(['personal', 'page', 'group'] as const).map(v => (
                                         <button key={v} onClick={() => setActiveMode(`facebook-${v}` as ActiveMode)}
-                                            className={`p-3 rounded text-[10px] font-bold uppercase tracking-widest transition-all ${activeMode.includes(v) ? 'bg-electric-cyan text-black' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}>
+                                            className={`p-3 rounded text-[10px] font-bold uppercase tracking-widest transition-all ${activeMode === `facebook-${v}` ? 'bg-electric-cyan text-black' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}>
                                             {v}
                                         </button>
                                     ))}
@@ -323,6 +349,20 @@ export default function SocialAssetsPage() {
                                         <TechInput label="CTA 2 (Secondary)" value={whatsappData.cta2} onChange={v => setWhatsappData({ ...whatsappData, cta2: v })} />
                                     </>
                                 )}
+                            </div>
+                        )}
+
+                        {/* INSTAGRAM CONTROLS */}
+                        {activeMode.startsWith('instagram') && (
+                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                                <TechInput label="Headline" value={instagramData.headline}
+                                    onChange={v => setInstagramData({ ...instagramData, headline: v })} />
+                                <TechInput label="Gold Highlight" value={instagramData.highlight}
+                                    onChange={v => setInstagramData({ ...instagramData, highlight: v })} />
+                                <TechTextArea label="Sub-Narrative" value={instagramData.subtext}
+                                    onChange={v => setInstagramData({ ...instagramData, subtext: v })} rows={3} />
+                                <TechInput label="CTA" value={instagramData.cta}
+                                    onChange={v => setInstagramData({ ...instagramData, cta: v })} />
                             </div>
                         )}
 
@@ -373,7 +413,7 @@ export default function SocialAssetsPage() {
                         )}
                     </div>
                     <div className="mt-auto p-6 border-t border-white/10 text-[10px] text-gray-600 font-mono text-center">
-                        INSPIRON_SOCIAL_GENERATOR_V2.12
+                        INSPIRON_SOCIAL_GENERATOR_V2.13
                     </div>
                 </aside>
 
@@ -500,8 +540,8 @@ export default function SocialAssetsPage() {
                                     <div className={`absolute inset-0 ${theme.grid} [background-size:30px_30px]`} />
                                     <div className="relative z-10 px-24">
                                         <div className="w-24 h-24 mx-auto mb-8"><MasterLogo idSuffix="fb-post" /></div>
-                                        <h2 className={`text-6xl font-black ${theme.text} uppercase tracking-tight mb-8 font-institutional`}>
-                                            {facebookData.headline.replace(/\\n/g, ' ')}
+                                        <h2 className={`text-6xl font-black ${theme.text} uppercase tracking-tight mb-8 whitespace-pre-line font-institutional`}>
+                                            {facebookData.headline}
                                         </h2>
                                         <p className={`${theme.sub} text-2xl font-light mb-12 max-w-2xl mx-auto font-institutional`}>
                                             {facebookData.subtext}
@@ -616,14 +656,14 @@ export default function SocialAssetsPage() {
                                     <div className="relative z-10">
                                         <div className="w-32 h-32 mx-auto mb-10"><MasterLogo idSuffix="social-post" /></div>
                                         <h2 className={`text-7xl font-black ${theme.text} uppercase tracking-tight mb-8 leading-tight font-institutional`}>
-                                            {linkedinData.headline}<br />
-                                            <span style={{ color: '#FFD700' }}>{linkedinData.highlight}</span>
+                                            {activeMode === 'instagram' ? instagramData.headline : linkedinData.headline}<br />
+                                            <span style={{ color: '#FFD700' }}>{activeMode === 'instagram' ? instagramData.highlight : linkedinData.highlight}</span>
                                         </h2>
                                         <p className={`${theme.sub} text-2xl font-light mb-12 max-w-2xl mx-auto font-institutional leading-relaxed`}>
-                                            {linkedinData.subtext}
+                                            {activeMode === 'instagram' ? instagramData.subtext : linkedinData.subtext}
                                         </p>
                                         <div className="px-12 py-5 bg-electric-cyan text-black font-black uppercase tracking-widest text-xl rounded-2xl inline-block shadow-lg">
-                                            {linkedinData.website}
+                                            {activeMode === 'instagram' ? instagramData.cta : linkedinData.website}
                                         </div>
                                     </div>
                                 </div>
@@ -730,19 +770,3 @@ export default function SocialAssetsPage() {
 }
 
 // ─── TECHNICAL COMPONENT PRIMITIVES ─────────────────────────────────────────
-
-const TechInput = ({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) => (
-    <div className="space-y-1 group">
-        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold font-mono group-hover:text-electric-cyan transition-colors">{label}</label>
-        <input type="text" value={value} onChange={e => onChange(e.target.value)} spellCheck={false}
-            className="w-full bg-black/40 border border-white/10 rounded px-3 py-3 text-xs text-white focus:outline-none focus:border-electric-cyan focus:bg-electric-cyan/5 font-mono transition-all" />
-    </div>
-);
-
-const TechTextArea = ({ label, value, onChange, rows }: { label: string; value: string; onChange: (v: string) => void; rows: number }) => (
-    <div className="space-y-1 group">
-        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold font-mono group-hover:text-electric-cyan transition-colors">{label}</label>
-        <textarea value={value} onChange={e => onChange(e.target.value)} rows={rows} spellCheck={false}
-            className="w-full bg-black/40 border border-white/10 rounded px-3 py-3 text-xs text-white focus:outline-none focus:border-electric-cyan focus:bg-electric-cyan/5 font-mono transition-all resize-none" />
-    </div>
-);
