@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import './print.css';
 import { RefinedLogo } from '@/components/Branding/RefinedLogo';
 
@@ -38,7 +38,7 @@ const BlueprintGrid = () => (
 );
 
 const PageWrapper = ({ children, pageNum, extraBg }: { children: React.ReactNode, pageNum: number, extraBg?: React.CSSProperties }) => (
-  <div className="pdf-page shadow-2xl mb-12 print:mb-0 print:shadow-none" style={{ fontFamily: 'inherit' }}>
+  <div className="pdf-page shadow-2xl mb-12 print:mb-0 print:shadow-none" style={{ fontFamily: 'inherit', width: '794px', minHeight: '1123px' }}>
     <BlueprintGrid />
     {extraBg && (
       <div className="absolute inset-0 pointer-events-none z-0" style={extraBg} />
@@ -107,7 +107,8 @@ const PageOne = () => (
   </PageWrapper>
 );
 
-// Page 2
+// Page 1-6 remain unchanged in content... (skipping for brevity in thoughts but implemented below)
+
 const PageTwo = () => (
   <PageWrapper pageNum={2}>
     <div className="mb-8">
@@ -177,7 +178,6 @@ const PageTwo = () => (
   </PageWrapper>
 );
 
-// Page 3
 const PageThree = () => (
   <PageWrapper pageNum={3}>
     <div className="mb-6">
@@ -239,7 +239,6 @@ const PageThree = () => (
   </PageWrapper>
 );
 
-// Page 4
 const PageFour = () => (
   <PageWrapper pageNum={4}>
     <div className="mb-6">
@@ -313,7 +312,6 @@ const PageFour = () => (
   </PageWrapper>
 );
 
-// Page 5
 const PageFive = () => (
   <PageWrapper pageNum={5}>
     <div className="mb-6">
@@ -390,7 +388,6 @@ const PageFive = () => (
   </PageWrapper>
 );
 
-// Page 6
 const PageSix = () => (
   <PageWrapper pageNum={6}>
     <div className="mb-10">
@@ -448,9 +445,59 @@ const PageSix = () => (
 );
 
 export default function UpworkPortfolioPage() {
+  const [exporting, setExporting] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const handleExportPDF = async () => {
+    setExporting(true);
+    setProgress(0);
+
+    try {
+      const { default: jsPDF } = await import('jspdf');
+      const { default: html2canvas } = await import('html2canvas');
+
+      const pages = document.querySelectorAll<HTMLElement>('.pdf-page');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [794, 1123],  // A4 at 96dpi in pixels
+        compress: true,
+      });
+
+      for (let i = 0; i < pages.length; i++) {
+        setProgress(Math.round((i / pages.length) * 100));
+
+        const canvas = await html2canvas(pages[i], {
+          scale: 2,              // 2x for crisp print quality
+          useCORS: true,
+          backgroundColor: '#010409',
+          width: 794,
+          height: 1123,
+          windowWidth: 794,
+          windowHeight: 1123,
+        });
+
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+        if (i > 0) pdf.addPage([794, 1123], 'portrait');
+        pdf.addImage(imgData, 'JPEG', 0, 0, 794, 1123);
+      }
+
+      setProgress(100);
+      pdf.save('INSPIRON-TECH-MD-ABU-HASAN-Portfolio.pdf');
+
+    } catch (err) {
+      console.error('PDF export failed:', err);
+      alert('PDF export failed. See console for details.');
+    } finally {
+      setExporting(false);
+      setProgress(0);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-900 py-12 print:p-0 print:bg-[#010409]">
-      <div className="max-w-[210mm] mx-auto">
+      <div className="max-w-[794px] mx-auto">
         <PageOne />
         <PageTwo />
         <PageThree />
@@ -459,12 +506,50 @@ export default function UpworkPortfolioPage() {
         <PageSix />
       </div>
 
-      <button 
-        onClick={() => window.print()}
-        className="no-print fixed bottom-8 right-8 z-50 bg-[#FFD700] text-[#010409] font-bold text-sm uppercase tracking-[0.15em] px-6 py-3 rounded-full hover:scale-105 transition-transform shadow-2xl"
+      {/* Floating Export Button */}
+      <button
+        onClick={handleExportPDF}
+        disabled={exporting}
+        className="no-print fixed bottom-8 right-8 z-50 
+          bg-[#FFD700] hover:bg-[#FFD700]/90 
+          disabled:bg-[#FFD700]/50 text-[#010409] 
+          px-6 py-3 rounded-full font-bold 
+          shadow-[0_0_20px_rgba(255,215,0,0.3)] 
+          transition-all uppercase tracking-widest text-sm 
+          flex items-center gap-3 min-w-[180px] justify-center"
       >
-        ⬇ Export PDF
+        {exporting ? (
+          <>
+            <svg className="animate-spin" xmlns="http://www.w3.org/2000/svg" 
+              width="16" height="16" viewBox="0 0 24 24" fill="none" 
+              stroke="currentColor" strokeWidth="2">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
+            {progress}% Rendering...
+          </>
+        ) : (
+          <>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" x2="12" y1="15" y2="3" />
+            </svg>
+            Export PDF
+          </>
+        )}
       </button>
+
+      {/* Progress Bar */}
+      {exporting && (
+        <div className="no-print fixed top-0 left-0 right-0 z-50 h-1 bg-black/50">
+          <div
+            className="h-full bg-[#FFD700] transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      )}
     </div>
   );
 }
