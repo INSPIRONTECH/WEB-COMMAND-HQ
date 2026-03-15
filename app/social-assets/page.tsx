@@ -537,7 +537,7 @@ export default function SocialAssetsPage() {
 
                         {/* LINKEDIN CONTROLS */}
                         {activeMode.startsWith('linkedin') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-widest text-action-gold font-bold flex items-center gap-2">
                                         <RefreshCcw size={10} /> Strategic Presets
@@ -572,7 +572,7 @@ export default function SocialAssetsPage() {
 
                         {/* FACEBOOK CONTROLS */}
                         {activeMode.startsWith('facebook') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="grid grid-cols-3 gap-2 mb-4">
                                     {(['personal', 'page', 'group'] as const).map(v => (
                                         <button key={v} onClick={() => setActiveMode(`facebook-${v}` as ActiveMode)}
@@ -590,7 +590,7 @@ export default function SocialAssetsPage() {
 
                         {/* WHATSAPP CONTROLS */}
                         {activeMode.startsWith('whatsapp') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="p-3 bg-white/5 border border-white/10 rounded text-[10px] text-gray-400 font-mono uppercase tracking-widest">
                                     MODE: {activeMode.replace(/-/g, ' ')}
                                 </div>
@@ -621,7 +621,7 @@ export default function SocialAssetsPage() {
 
                         {/* INSTAGRAM CONTROLS */}
                         {activeMode.startsWith('instagram') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <InstitutionalInput label="Headline" value={instagramData.headline}
                                     onChange={v => setInstagramData({ ...instagramData, headline: v })} />
                                 <InstitutionalInput label="Gold Highlight" value={instagramData.highlight}
@@ -635,7 +635,7 @@ export default function SocialAssetsPage() {
 
                         {/* PROFILE CONTROLS (Universal) */}
                         {activeMode === 'profile' && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <InstitutionalInput label="Initials" value={profileData.initials} onChange={v => setProfileData({ ...profileData, initials: v })} />
                                 <InstitutionalInput label="Role Badge" value={profileData.role} onChange={v => setProfileData({ ...profileData, role: v })} />
                                 <div className="p-4 bg-action-gold/5 border border-action-gold/20 rounded text-[10px] text-action-gold/80 font-mono leading-relaxed">
@@ -646,7 +646,7 @@ export default function SocialAssetsPage() {
 
                         {/* AUDIT CONTROLS */}
                         {activeMode === 'audit' && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="p-3 bg-electric-cyan/5 border border-electric-cyan/20 rounded text-[10px] text-electric-cyan font-mono">STATUS: GEOMETRIC INTEGRITY CHECK</div>
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between p-3 bg-white/5 rounded border border-white/5">
@@ -681,7 +681,7 @@ export default function SocialAssetsPage() {
 
                         {/* UPWORK CONTROLS */}
                         {activeMode.startsWith('upwork') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="p-3 bg-[#14a800]/10 border border-[#14a800]/30 rounded text-[10px] text-[#14a800] font-mono uppercase tracking-widest">Upwork Portfolio Assets // JPG Export</div>
                                 <div className="grid grid-cols-2 gap-2">
                                     {(['upwork-hero', 'upwork-before-after', 'upwork-process', 'upwork-pricing'] as const).map(m => (
@@ -708,7 +708,7 @@ export default function SocialAssetsPage() {
 
                         {/* LOGO CONTROLS */}
                         {activeMode.startsWith('logo-') && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div suppressHydrationWarning className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-300">
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-widest text-action-gold font-bold font-mono">Shape</label>
                                     <div className="grid grid-cols-3 gap-2">
