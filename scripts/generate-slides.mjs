@@ -23,9 +23,9 @@ if (!fs.existsSync(OUT_DIR)) {
   console.log('Navigating to http://localhost:3000/case-studies/nobin-agro ...');
   // Make sure your Next.js server is running!
   try {
-    await page.goto('http://localhost:3000/case-studies/nobin-agro', { waitUntil: 'networkidle0', timeout: 30000 });
+    await page.goto('http://localhost:3001/case-studies/nobin-agro', { waitUntil: 'networkidle0', timeout: 30000 });
   } catch (err) {
-    console.error('Failed to load page. Is the Next.js dev server running on port 3000?');
+    console.error('Failed to load page. Is the Next.js dev server running on port 3001?');
     process.exit(1);
   }
 
