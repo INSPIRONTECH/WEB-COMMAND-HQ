@@ -52,6 +52,11 @@ export default function CaseStudiesPage() {
                                         <span><strong>Custom COA:</strong> Specific accounts for Mortality Loss to track dead stock value.</span>
                                     </li>
                                 </ul>
+                                <div className="mt-8">
+                                    <Link href="/case-studies/nobin-agro" className="inline-flex items-center gap-2 text-action-gold hover:text-white font-bold tracking-widest uppercase text-sm border border-action-gold/30 rounded-xl px-6 py-3 hover:bg-action-gold/10 transition-all glow-cyan cursor-pointer">
+                                        <Printer size={16} /> View Carousel Case Study &rarr;
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
