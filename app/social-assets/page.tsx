@@ -1502,6 +1502,9 @@ export default function SocialAssetsPage() {
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 358.846 350.3"
+                                        preserveAspectRatio="xMidYMid meet"
+                                        width={logoW - exportConfig.padding * 2}
+                                        height={logoH - exportConfig.padding * 2}
                                         style={{
                                             position:            'absolute',
                                             top:                 `${exportConfig.padding}px`,
