@@ -18,31 +18,50 @@ interface UpworkData {
     website: string;
 }
 
+/* ─── html2canvas TEXT FIX ────────────────────────────────────────────────
+   html2canvas collapses word-spacing with custom @font-face fonts.
+   EVERY text element inside the export canvas must use explicit
+   word-spacing and letter-spacing via inline style — NOT Tailwind
+   tracking-* classes. This object provides safe defaults.
+   ──────────────────────────────────────────────────────────────────────── */
+const T = {
+    /** Normal body text — ensures spaces render */
+    normal: { wordSpacing: '0.15em', letterSpacing: '0px' } as React.CSSProperties,
+    /** Tight headline — slightly reduced but still visible spaces */
+    tight: { wordSpacing: '0.12em', letterSpacing: '-0.01em' } as React.CSSProperties,
+    /** Wide tracked labels (uppercase) */
+    wide: { wordSpacing: '0.25em', letterSpacing: '0.2em' } as React.CSSProperties,
+    /** Extra-wide tracked (badges, tags) */
+    xwide: { wordSpacing: '0.3em', letterSpacing: '0.3em' } as React.CSSProperties,
+    /** Monospace text */
+    mono: { wordSpacing: '0.2em', letterSpacing: '0.05em', fontFamily: 'monospace' } as React.CSSProperties,
+};
+
 /* ─── PRESETS ────────────────────────────────────────────────────────────── */
 const PRESETS: Record<string, Partial<UpworkData>> = {
     'ERP Setup': {
         tag: 'Official Manager.io Partner',
         headline: 'Manager.io ERP',
         highlight: 'Setup & Data Migration',
-        subtext: 'Clean COA · Zero-Loss Migration · Audit-Ready Reports',
+        subtext: 'Clean COA  ·  Zero-Loss Migration  ·  Audit-Ready Reports',
     },
     'Data Migration': {
         tag: 'Zero-Loss Data Migration',
         headline: 'Clean Migration',
         highlight: 'from QuickBooks · Tally · Excel',
-        subtext: 'Full audit trail · Opening balance verification · 0.1% tolerance',
+        subtext: 'Full audit trail  ·  Opening balance verification  ·  0.1% tolerance',
     },
     'BPMN Mapping': {
         tag: 'BPMN 2.0 · Process Architecture',
         headline: 'Business Processes',
         highlight: 'Made Clear',
-        subtext: 'As-Is / To-Be · Swim-Lane Diagrams · SOPs · Automation-Ready',
+        subtext: 'As-Is / To-Be  ·  Swim-Lane Diagrams  ·  SOPs  ·  Automation-Ready',
     },
     'Dashboard': {
         tag: 'Audit-Ready Financial Reports',
         headline: 'Your KPI Dashboard',
         highlight: 'Built Right',
-        subtext: 'P&L · Balance Sheet · Cash Flow · Management Reports',
+        subtext: 'P&L  ·  Balance Sheet  ·  Cash Flow  ·  Management Reports',
     },
 };
 
@@ -87,9 +106,10 @@ const PRICING_TIERS = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   UPWORK PORTFOLIO ASSET STUDIO — V2.0
+   UPWORK PORTFOLIO ASSET STUDIO — V2.1
    INSPIRON TECH · MD ABU HASAN
    4 canvas modes · 1600×1200px · JPG 0.95 export
+   FIX: html2canvas word-spacing collapse — all canvas text uses inline styles
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export default function UpworkAssetsStudio() {
@@ -100,7 +120,7 @@ export default function UpworkAssetsStudio() {
         tag: 'Official Manager.io Partner',
         headline: 'Manager.io ERP',
         highlight: 'Setup & Data Migration',
-        subtext: 'Clean COA · Zero-Loss Migration · Audit-Ready Reports',
+        subtext: 'Clean COA  ·  Zero-Loss Migration  ·  Audit-Ready Reports',
         name: 'MD ABU HASAN',
         role: 'Founder & ERP Architect',
         website: 'inspiron.tech',
@@ -133,7 +153,7 @@ export default function UpworkAssetsStudio() {
             const el = document.getElementById('data-export-canvas');
             if (!el) return;
 
-            // Hide blur orbs — html2canvas renders them as solid blobs
+            // Hide blur orbs — html2canvas renders CSS blur as solid blobs
             const orbs = el.querySelectorAll<HTMLElement>('[data-blur-orb]');
             orbs.forEach(o => (o.style.display = 'none'));
 
@@ -173,39 +193,40 @@ export default function UpworkAssetsStudio() {
             <div className="flex items-center gap-4 mb-10">
                 <RefinedIcon size={64} />
                 <div className="flex items-baseline">
-                    <span className="text-[28px] font-medium lowercase text-white" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>inspiron</span>
-                    <span className="text-[26px] font-light uppercase text-[#FFD700] ml-1.5" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>TECH</span>
+                    <span style={{ fontSize: '28px', fontWeight: 500, textTransform: 'lowercase', color: '#FFFFFF', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>inspiron</span>
+                    <span style={{ fontSize: '26px', fontWeight: 300, textTransform: 'uppercase', color: '#FFD700', marginLeft: '6px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>TECH</span>
                 </div>
             </div>
 
             {/* Tag Badge */}
-            <div className="inline-block px-10 py-4 border border-[#00D2FF]/30 bg-[#00D2FF]/8 text-[#00D2FF] font-bold tracking-[0.3em] uppercase rounded-full mb-14 text-xl backdrop-blur-sm">
+            <div style={{ padding: '16px 40px', border: '1px solid rgba(0,210,255,0.3)', backgroundColor: 'rgba(0,210,255,0.06)', color: '#00D2FF', fontWeight: 700, textTransform: 'uppercase', borderRadius: '9999px', marginBottom: '56px', fontSize: '20px', ...T.xwide }}>
                 {uwData.tag}
             </div>
 
             {/* Headline */}
-            <h1 className="text-[110px] font-black text-white leading-[1.05] tracking-tight mb-4" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>
+            <h1 style={{ fontSize: '110px', fontWeight: 900, color: '#FFFFFF', lineHeight: 1.05, marginBottom: '16px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.tight }}>
                 {uwData.headline}
             </h1>
-            <h2 className="text-[85px] font-light text-[#FFD700] leading-tight mb-14" style={{ fontFamily: 'Neo Sans Pro, sans-serif', fontStyle: 'italic' }}>
+            <h2 style={{ fontSize: '85px', fontWeight: 300, color: '#FFD700', lineHeight: 1.15, marginBottom: '56px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', fontStyle: 'italic', ...T.normal }}>
                 {uwData.highlight}
             </h2>
 
             {/* Subtext */}
-            <p className="text-3xl text-[#9CA3AF] max-w-[1000px] leading-relaxed mb-20">
+            <p style={{ fontSize: '30px', color: '#9CA3AF', maxWidth: '1000px', lineHeight: 1.6, marginBottom: '80px', ...T.normal }}>
                 {uwData.subtext}
             </p>
 
             {/* Bottom Cards */}
-            <div className="flex gap-8">
+            <div style={{ display: 'flex', gap: '32px' }}>
                 {[
-                    { icon: '📊', label: 'P&L Statement' },
-                    { icon: '🏦', label: 'Balance Sheet' },
-                    { icon: '💸', label: 'Cash Flow' },
+                    { icon: '📊', label: 'P&L Statement', sub: 'Revenue  ·  Expenses  ·  Net' },
+                    { icon: '🏦', label: 'Balance Sheet', sub: 'Assets  ·  Liabilities  ·  Equity' },
+                    { icon: '💸', label: 'Cash Flow', sub: 'Inflow  ·  Outflow  ·  Reserves' },
                 ].map(c => (
-                    <div key={c.label} className="bg-white/[0.04] border border-[#00D2FF]/20 rounded-2xl px-14 py-8 flex items-center gap-5" style={{ boxShadow: '0 0 24px rgba(0,210,255,0.08)' }}>
-                        <span className="text-4xl">{c.icon}</span>
-                        <span className="text-2xl text-white font-medium">{c.label}</span>
+                    <div key={c.label} style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(0,210,255,0.2)', borderRadius: '16px', padding: '32px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', boxShadow: '0 0 24px rgba(0,210,255,0.08)', minWidth: '280px' }}>
+                        <span style={{ fontSize: '36px' }}>{c.icon}</span>
+                        <span style={{ fontSize: '24px', color: '#00D2FF', fontWeight: 600, ...T.normal }}>{c.label}</span>
+                        <span style={{ fontSize: '14px', color: '#6B7280', ...T.mono }}>{c.sub}</span>
                     </div>
                 ))}
             </div>
@@ -213,160 +234,162 @@ export default function UpworkAssetsStudio() {
     );
 
     const renderBeforeAfter = () => (
-        <div className="flex flex-col h-full">
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             {/* Top watermark */}
-            <div className="flex items-center justify-center gap-3 mb-6 opacity-60">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '24px', opacity: 0.6 }}>
                 <RefinedIcon size={36} />
                 <div className="flex items-baseline">
-                    <span className="text-[18px] font-medium lowercase text-white" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>inspiron</span>
-                    <span className="text-[16px] font-light uppercase text-[#FFD700] ml-1" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>TECH</span>
+                    <span style={{ fontSize: '18px', fontWeight: 500, textTransform: 'lowercase', color: '#FFFFFF', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>inspiron</span>
+                    <span style={{ fontSize: '16px', fontWeight: 300, textTransform: 'uppercase', color: '#FFD700', marginLeft: '4px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>TECH</span>
                 </div>
             </div>
 
             {/* Two Panels */}
-            <div className="grid grid-cols-2 gap-10 flex-1">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', flex: 1 }}>
                 {/* BEFORE */}
-                <div className="bg-[#0a0505]/80 border border-red-500/20 rounded-3xl p-14 relative overflow-hidden">
-                    <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-red-500 rounded-full opacity-[0.04] blur-[200px] pointer-events-none" />
-                    <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-red-900/90 text-white px-8 py-3 rounded-full font-bold tracking-widest uppercase border border-red-500/50 text-lg z-10">Before</div>
+                <div style={{ backgroundColor: 'rgba(10,5,5,0.8)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '24px', padding: '56px', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: 0, right: '32px', transform: 'translateY(-50%)', backgroundColor: 'rgba(127,29,29,0.9)', color: '#FFFFFF', padding: '12px 32px', borderRadius: '9999px', fontWeight: 700, textTransform: 'uppercase', border: '1px solid rgba(239,68,68,0.5)', fontSize: '18px', zIndex: 10, ...T.wide }}>Before</div>
 
-                    <h3 className="text-4xl font-light text-red-400 mb-8 mt-4" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>
+                    <h3 style={{ fontSize: '36px', fontWeight: 300, color: '#f87171', marginBottom: '32px', marginTop: '16px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>
                         Spreadsheets &amp; broken ERP
                     </h3>
 
                     {/* Fake spreadsheet rows */}
-                    <div className="space-y-3 opacity-60">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', opacity: 0.6 }}>
                         {Array.from({ length: 9 }).map((_, i) => (
-                            <div key={i} className="flex gap-3 items-center">
-                                <div className="w-24 h-5 bg-gray-600/30 rounded" />
-                                <div className="w-16 h-5 bg-gray-600/20 rounded" />
-                                <div className="flex-1 h-5 bg-gray-600/15 rounded" />
-                                <div className="w-20 h-5 bg-yellow-500/20 rounded" />
+                            <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                                <div style={{ width: '96px', height: '20px', backgroundColor: 'rgba(107,114,128,0.3)', borderRadius: '4px' }} />
+                                <div style={{ width: '64px', height: '20px', backgroundColor: 'rgba(107,114,128,0.2)', borderRadius: '4px' }} />
+                                <div style={{ flex: 1, height: '20px', backgroundColor: 'rgba(107,114,128,0.15)', borderRadius: '4px' }} />
+                                <div style={{ width: '80px', height: '20px', backgroundColor: 'rgba(234,179,8,0.2)', borderRadius: '4px' }} />
                             </div>
                         ))}
                     </div>
-                    <p className="text-lg text-gray-500 mt-8 font-mono">??? errors · no audit trail</p>
+                    <p style={{ fontSize: '18px', color: '#6B7280', marginTop: '32px', ...T.mono }}>??? errors  ·  no audit trail</p>
                 </div>
 
                 {/* AFTER */}
-                <div className="bg-[#00D2FF]/[0.06] border border-[#00D2FF]/30 rounded-3xl p-14 relative overflow-hidden">
-                    <div className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] bg-[#00D2FF] rounded-full opacity-[0.06] blur-[200px] pointer-events-none" />
-                    <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#00D2FF] text-[#010409] px-8 py-3 rounded-full font-black tracking-widest uppercase text-lg z-10" style={{ boxShadow: '0 0 20px rgba(0,210,255,0.4)' }}>After</div>
+                <div style={{ backgroundColor: 'rgba(0,210,255,0.04)', border: '1px solid rgba(0,210,255,0.3)', borderRadius: '24px', padding: '56px', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: 0, right: '32px', transform: 'translateY(-50%)', backgroundColor: '#00D2FF', color: '#010409', padding: '12px 32px', borderRadius: '9999px', fontWeight: 900, textTransform: 'uppercase', fontSize: '18px', zIndex: 10, boxShadow: '0 0 20px rgba(0,210,255,0.4)', ...T.wide }}>After</div>
 
-                    <h3 className="text-4xl font-light text-[#00D2FF] mb-10 mt-4" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>
+                    <h3 style={{ fontSize: '36px', fontWeight: 300, color: '#00D2FF', marginBottom: '40px', marginTop: '16px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>
                         Stable Manager.io accounting core
                     </h3>
 
                     {/* Result cards */}
-                    <div className="space-y-6">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                         {[
                             { icon: '📈', label: 'P&L Statement', status: 'Synced', color: '#22c55e' },
                             { icon: '🏦', label: 'Balance Sheet', status: 'Audit-Ready', color: '#00D2FF' },
                             { icon: '💸', label: 'Cash Flow', status: 'Accurate', color: '#FFD700' },
                         ].map(r => (
-                            <div key={r.label} className="bg-[#050a10] border border-[#00D2FF]/20 rounded-2xl px-10 py-7 flex items-center justify-between" style={{ boxShadow: '0 0 16px rgba(0,210,255,0.06)' }}>
-                                <div className="flex items-center gap-5">
-                                    <span className="text-4xl">{r.icon}</span>
-                                    <span className="text-2xl text-white font-medium">{r.label}</span>
+                            <div key={r.label} style={{ backgroundColor: '#050a10', border: '1px solid rgba(0,210,255,0.2)', borderRadius: '16px', padding: '28px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 0 16px rgba(0,210,255,0.06)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                    <span style={{ fontSize: '36px' }}>{r.icon}</span>
+                                    <span style={{ fontSize: '24px', color: '#FFFFFF', fontWeight: 500, ...T.normal }}>{r.label}</span>
                                 </div>
-                                <span className="px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest" style={{ backgroundColor: `${r.color}20`, color: r.color, border: `1px solid ${r.color}40` }}>{r.status}</span>
+                                <span style={{ padding: '8px 24px', borderRadius: '9999px', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', backgroundColor: `${r.color}20`, color: r.color, border: `1px solid ${r.color}40`, ...T.wide }}>{r.status}</span>
                             </div>
                         ))}
                     </div>
 
-                    <p className="text-lg text-[#00D2FF]/60 mt-8 font-mono">0 errors · full reconciliation</p>
+                    <p style={{ fontSize: '18px', color: 'rgba(0,210,255,0.6)', marginTop: '32px', ...T.mono }}>0 errors  ·  full reconciliation</p>
                 </div>
             </div>
         </div>
     );
 
     const renderProcess = () => (
-        <div className="flex flex-col items-center h-full justify-between">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', justifyContent: 'space-between' }}>
             {/* Header */}
-            <div className="text-center">
-                <div className="flex items-center justify-center gap-3 mb-8 opacity-80">
+            <div style={{ textAlign: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '32px', opacity: 0.8 }}>
                     <RefinedIcon size={52} />
                     <div className="flex items-baseline">
-                        <span className="text-[22px] font-medium lowercase text-white" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>inspiron</span>
-                        <span className="text-[20px] font-light uppercase text-[#FFD700] ml-1" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>TECH</span>
+                        <span style={{ fontSize: '22px', fontWeight: 500, textTransform: 'lowercase', color: '#FFFFFF', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>inspiron</span>
+                        <span style={{ fontSize: '20px', fontWeight: 300, textTransform: 'uppercase', color: '#FFD700', marginLeft: '4px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>TECH</span>
                     </div>
                 </div>
-                <div className="text-[#9CA3AF] font-bold tracking-[0.3em] uppercase mb-6 text-lg">DELIVERY PROTOCOL</div>
-                <h1 className="text-[72px] font-black text-white leading-tight border-b-2 border-[#00D2FF] pb-4 inline-block" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>
+                <div style={{ color: '#9CA3AF', fontWeight: 700, textTransform: 'uppercase', marginBottom: '24px', fontSize: '18px', ...T.xwide }}>DELIVERY PROTOCOL</div>
+                <h1 style={{ fontSize: '72px', fontWeight: 900, color: '#FFFFFF', lineHeight: 1.1, borderBottom: '2px solid #00D2FF', paddingBottom: '16px', display: 'inline-block', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.tight }}>
                     Your Setup in 4 Clear Steps
                 </h1>
             </div>
 
             {/* 4-Step Grid */}
-            <div className="grid grid-cols-4 gap-8 w-full flex-1 items-center py-8">
-                {PROCESS_STEPS.map((s, i) => (
-                    <React.Fragment key={s.num}>
-                        <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-12 text-center relative">
-                            {/* Step Number Circle */}
-                            <div className="w-20 h-20 rounded-full border-2 flex items-center justify-center text-3xl font-black absolute -top-10 left-1/2 -translate-x-1/2" style={{ borderColor: s.color, color: s.color, backgroundColor: `${s.color}15` }}>
-                                {s.num}
-                            </div>
-                            {/* Emoji */}
-                            <div className="text-7xl mt-6 mb-6">{s.emoji}</div>
-                            {/* Title */}
-                            <h3 className="text-3xl font-bold uppercase tracking-widest mb-3" style={{ color: s.color }}>
-                                {s.title}
-                            </h3>
-                            {/* Sub */}
-                            <p className="text-xl text-[#9CA3AF]">{s.sub}</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', width: '100%', flex: 1, alignItems: 'center', paddingTop: '48px', paddingBottom: '32px' }}>
+                {PROCESS_STEPS.map(s => (
+                    <div key={s.num} style={{ backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', padding: '48px', textAlign: 'center', position: 'relative' }}>
+                        {/* Step Number Circle */}
+                        <div style={{ width: '80px', height: '80px', borderRadius: '50%', border: `2px solid ${s.color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px', fontWeight: 900, position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', color: s.color, backgroundColor: `${s.color}15`, ...T.normal }}>
+                            {s.num}
                         </div>
-                    </React.Fragment>
+                        {/* Emoji */}
+                        <div style={{ fontSize: '70px', marginTop: '24px', marginBottom: '24px' }}>{s.emoji}</div>
+                        {/* Title */}
+                        <h3 style={{ fontSize: '30px', fontWeight: 700, textTransform: 'uppercase', marginBottom: '12px', color: s.color, ...T.wide }}>
+                            {s.title}
+                        </h3>
+                        {/* Sub */}
+                        <p style={{ fontSize: '20px', color: '#9CA3AF', ...T.normal }}>{s.sub}</p>
+                    </div>
                 ))}
             </div>
 
             {/* Bottom Badge */}
-            <div className="bg-white/[0.04] border border-white/10 rounded-2xl px-14 py-6 text-xl text-white font-mono tracking-wide">
-                Zero-Loss Protocol · 0.1% Error Tolerance · Every Stage Verified
+            <div style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '24px 56px', fontSize: '20px', color: '#FFFFFF', ...T.mono }}>
+                Zero-Loss Protocol  ·  0.1% Error Tolerance  ·  Every Stage Verified
             </div>
         </div>
     );
 
     const renderPricing = () => (
-        <div className="flex flex-col items-center h-full pt-8">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', paddingTop: '32px' }}>
             {/* Header */}
-            <div className="flex items-center justify-center gap-3 mb-6 opacity-80">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '24px', opacity: 0.8 }}>
                 <RefinedIcon size={52} />
                 <div className="flex items-baseline">
-                    <span className="text-[22px] font-medium lowercase text-white" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>inspiron</span>
-                    <span className="text-[20px] font-light uppercase text-[#FFD700] ml-1" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>TECH</span>
+                    <span style={{ fontSize: '22px', fontWeight: 500, textTransform: 'lowercase', color: '#FFFFFF', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>inspiron</span>
+                    <span style={{ fontSize: '20px', fontWeight: 300, textTransform: 'uppercase', color: '#FFD700', marginLeft: '4px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.normal }}>TECH</span>
                 </div>
             </div>
-            <h1 className="text-[68px] font-black text-white leading-tight mb-2" style={{ fontFamily: 'Neo Sans Pro, sans-serif' }}>
-                Choose Your <span className="text-[#00D2FF]">ERP Package</span>
+            <h1 style={{ fontSize: '68px', fontWeight: 900, color: '#FFFFFF', lineHeight: 1.1, marginBottom: '8px', fontFamily: 'Neo Sans Pro, Inter, sans-serif', ...T.tight }}>
+                Choose Your <span style={{ color: '#00D2FF' }}>ERP Package</span>
             </h1>
-            <p className="text-2xl text-[#9CA3AF] mb-14">{uwData.subtext}</p>
+            <p style={{ fontSize: '24px', color: '#9CA3AF', marginBottom: '56px', ...T.normal }}>{uwData.subtext}</p>
 
             {/* 3-Tier Grid */}
-            <div className="grid grid-cols-3 gap-8 w-full items-stretch flex-1 max-h-[750px]">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', width: '100%', alignItems: 'stretch', flex: 1, maxHeight: '750px' }}>
                 {PRICING_TIERS.map(tier => (
                     <div
                         key={tier.name}
-                        className={`rounded-3xl p-12 flex flex-col relative ${
-                            tier.featured
-                                ? 'bg-gradient-to-b from-[#00D2FF]/10 to-transparent border-2 border-[#00D2FF]/50 -mt-4 pb-16'
-                                : 'bg-white/[0.03] border border-white/10 mt-6'
-                        }`}
+                        style={{
+                            borderRadius: '24px',
+                            padding: '48px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            position: 'relative',
+                            ...(tier.featured
+                                ? { background: 'linear-gradient(to bottom, rgba(0,210,255,0.1), transparent)', border: '2px solid rgba(0,210,255,0.5)', marginTop: '-16px', paddingBottom: '64px' }
+                                : { backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', marginTop: '24px' }
+                            ),
+                        }}
                     >
                         {tier.featured && (
-                            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#00D2FF] text-[#010409] px-8 py-2.5 rounded-full font-black tracking-widest uppercase text-sm">
+                            <div style={{ position: 'absolute', top: '-20px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#00D2FF', color: '#010409', padding: '10px 32px', borderRadius: '9999px', fontWeight: 900, textTransform: 'uppercase', fontSize: '14px', ...T.wide }}>
                                 Most Popular
                             </div>
                         )}
 
-                        <h3 className={`text-4xl font-bold uppercase tracking-wider mb-8 ${tier.featured ? 'text-[#00D2FF]' : 'text-white'}`}>
+                        <h3 style={{ fontSize: '36px', fontWeight: 700, textTransform: 'uppercase', marginBottom: '32px', color: tier.featured ? '#00D2FF' : '#FFFFFF', ...T.wide }}>
                             {tier.name}
                         </h3>
 
-                        <div className="space-y-5 flex-1">
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
                             {tier.items.map(item => (
-                                <div key={item} className="flex items-start gap-4">
-                                    <span className="text-[#FFD700] text-2xl mt-0.5">✓</span>
-                                    <span className="text-xl text-gray-300">{item}</span>
+                                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                                    <span style={{ color: '#FFD700', fontSize: '24px', marginTop: '2px' }}>✓</span>
+                                    <span style={{ fontSize: '20px', color: '#D1D5DB', ...T.normal }}>{item}</span>
                                 </div>
                             ))}
                         </div>
@@ -375,8 +398,8 @@ export default function UpworkAssetsStudio() {
             </div>
 
             {/* Footer */}
-            <div className="mt-auto pt-8 text-center">
-                <p className="text-lg text-[#9CA3AF] font-mono">{uwData.website} · {uwData.name} · {uwData.role}</p>
+            <div style={{ marginTop: 'auto', paddingTop: '32px', textAlign: 'center' }}>
+                <p style={{ fontSize: '18px', color: '#9CA3AF', ...T.mono }}>{uwData.website}  ·  {uwData.name}  ·  {uwData.role}</p>
             </div>
         </div>
     );
@@ -406,7 +429,7 @@ export default function UpworkAssetsStudio() {
                     <Link href="/pitch-deck/upwork-portfolio" className="text-gray-500 hover:text-white text-[10px] font-mono tracking-widest transition-colors hidden sm:block">Pitch Deck →</Link>
                 </div>
                 <div className="text-[10px] text-gray-600 font-mono tracking-widest hidden lg:block">
-                    UPWORK PORTFOLIO STUDIO // V2.0 // ACTIVE
+                    UPWORK PORTFOLIO STUDIO // V2.1 // ACTIVE
                 </div>
                 <div className="flex gap-1.5">
                     {modes.map(m => (
@@ -486,6 +509,8 @@ export default function UpworkAssetsStudio() {
                         &gt;&gt; EXPORT: JPG 0.95q — enforced &lt;10MB Upwork compliance
                         <br />
                         &gt;&gt; CANVAS: 1600×1200px · 4:3 · Blur orbs hidden on export
+                        <br />
+                        &gt;&gt; V2.1: html2canvas word-spacing fix applied
                     </div>
 
                     {/* Export Button */}
@@ -517,34 +542,36 @@ export default function UpworkAssetsStudio() {
                         {/* ═══ THE EXPORT CANVAS ═══ */}
                         <div
                             id="data-export-canvas"
-                            className="w-[1600px] h-[1200px] relative overflow-hidden flex flex-col border border-white/5"
-                            style={{ backgroundColor: '#010409', padding: '64px' }}
+                            style={{ width: '1600px', height: '1200px', backgroundColor: '#010409', padding: '64px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.05)' }}
                         >
                             {/* Grid Overlay */}
                             <div
-                                className="absolute inset-0 pointer-events-none z-0"
                                 style={{
+                                    position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
                                     backgroundImage: 'linear-gradient(to right, rgba(0,210,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,210,255,0.03) 1px, transparent 1px)',
                                     backgroundSize: '40px 40px',
                                 }}
                             />
 
                             {/* Blur Orbs (hidden on export) */}
-                            <div data-blur-orb className="absolute top-[-300px] right-[-300px] w-[900px] h-[900px] bg-[#00D2FF] rounded-full opacity-[0.07] pointer-events-none z-0" style={{ filter: 'blur(200px)' }} />
-                            <div data-blur-orb className="absolute bottom-[-300px] left-[-300px] w-[800px] h-[800px] bg-[#FFD700] rounded-full opacity-[0.04] pointer-events-none z-0" style={{ filter: 'blur(200px)' }} />
+                            <div data-blur-orb style={{ position: 'absolute', top: '-300px', right: '-300px', width: '900px', height: '900px', backgroundColor: '#00D2FF', borderRadius: '50%', opacity: 0.07, pointerEvents: 'none', zIndex: 0, filter: 'blur(200px)' }} />
+                            <div data-blur-orb style={{ position: 'absolute', bottom: '-300px', left: '-300px', width: '800px', height: '800px', backgroundColor: '#FFD700', borderRadius: '50%', opacity: 0.04, pointerEvents: 'none', zIndex: 0, filter: 'blur(200px)' }} />
 
                             {/* Watermark Logo */}
-                            <div className="absolute bottom-12 right-12 z-50 opacity-50">
+                            <div style={{ position: 'absolute', bottom: '48px', right: '48px', zIndex: 50, opacity: 0.5 }}>
                                 <RefinedIcon size={72} />
                             </div>
 
                             {/* Website Watermark */}
-                            <div className="absolute bottom-14 left-16 z-50 text-[#9CA3AF] opacity-40 font-mono text-lg tracking-widest">
+                            <div style={{ position: 'absolute', bottom: '56px', left: '64px', zIndex: 50, color: '#9CA3AF', opacity: 0.4, fontSize: '18px', ...T.mono }}>
                                 {uwData.website}
                             </div>
 
+                            {/* Horizontal accent line */}
+                            <div style={{ position: 'absolute', bottom: '120px', left: '64px', right: '64px', height: '1px', backgroundColor: 'rgba(0,210,255,0.15)', zIndex: 5 }} />
+
                             {/* ─── DYNAMIC CONTENT ─── */}
-                            <div className="relative z-10 flex flex-col h-full">
+                            <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', height: '100%' }}>
                                 {activeMode === 'uw-hero' && renderHero()}
                                 {activeMode === 'uw-before-after' && renderBeforeAfter()}
                                 {activeMode === 'uw-process' && renderProcess()}
