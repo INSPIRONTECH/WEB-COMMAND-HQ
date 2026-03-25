@@ -145,17 +145,20 @@ export default function UpworkAssetsStudio() {
                 backgroundColor: '#010409',
                 width: 1600,
                 height: 1200,
+                windowWidth: 1600,   // CRITICAL: prevents reflow into narrow viewport
+                windowHeight: 1200,
                 logging: false,
-                onclone: (clonedDoc) => {
-                    // html2canvas strips word-spacing from custom @font-face glyphs.
-                    // Injecting a style tag into the cloned document is the ONLY
-                    // reliable way to force correct spacing before pixel capture.
-                    const style = clonedDoc.createElement('style');
-                    style.innerHTML = `
-                        * { word-spacing: 0.15em !important; letter-spacing: 0 !important; }
-                        .font-mono * { word-spacing: 0.1em !important; letter-spacing: 0.05em !important; }
-                    `;
-                    clonedDoc.head.appendChild(style);
+                onclone: (_clonedDoc, clonedEl) => {
+                    // html2canvas measures custom @font-face space glyphs as 0px wide.
+                    // Replacing U+0020 with U+00A0 (NBSP) forces a measurable glyph.
+                    const walk = (node: Node) => {
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            node.textContent = node.textContent?.replace(/ /g, '\u00A0') ?? null;
+                        } else {
+                            node.childNodes.forEach(walk);
+                        }
+                    };
+                    walk(clonedEl);
                 },
             });
             const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
