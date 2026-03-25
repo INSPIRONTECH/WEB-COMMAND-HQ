@@ -308,7 +308,7 @@ export default function UpworkAssetsStudio() {
                 <div style={{ backgroundColor: 'rgba(10,5,5,0.8)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '24px', padding: '56px', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ position: 'absolute', top: 0, right: '32px', transform: 'translateY(-50%)', backgroundColor: 'rgba(127,29,29,0.9)', color: '#FFFFFF', padding: '12px 32px', borderRadius: '9999px', fontWeight: 700, textTransform: 'uppercase', border: '1px solid rgba(239,68,68,0.5)', fontSize: '18px', zIndex: 10 }}>Before</div>
                     <h3 style={{ fontSize: '36px', fontWeight: 300, color: '#f87171', marginBottom: '32px', marginTop: '16px' }}>
-                        Spreadsheets &amp; broken ERP
+                        {'Spreadsheets\u00A0&\u00A0broken\u00A0ERP'}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', opacity: 0.6 }}>
                         {Array.from({ length: 9 }).map((_, i) => (
@@ -320,20 +320,20 @@ export default function UpworkAssetsStudio() {
                             </div>
                         ))}
                     </div>
-                    <p style={{ fontSize: '18px', color: '#6B7280', marginTop: '32px', border: 'none' }}>??? errors  ·  no audit trail</p>
+                    <p style={{ fontSize: '18px', color: '#6B7280', marginTop: '32px', border: 'none' }}>{'???\u00A0errors\u00A0\u00B7\u00A0no\u00A0audit\u00A0trail'}</p>
                 </div>
 
                 {/* AFTER */}
                 <div style={{ backgroundColor: 'rgba(0,210,255,0.04)', border: '1px solid rgba(0,210,255,0.3)', borderRadius: '24px', padding: '56px', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ position: 'absolute', top: 0, right: '32px', transform: 'translateY(-50%)', backgroundColor: '#00D2FF', color: '#010409', padding: '12px 32px', borderRadius: '9999px', fontWeight: 900, textTransform: 'uppercase', fontSize: '18px', zIndex: 10, boxShadow: '0 0 20px rgba(0,210,255,0.4)' }}>After</div>
                     <h3 style={{ fontSize: '36px', fontWeight: 300, color: '#00D2FF', marginBottom: '40px', marginTop: '16px' }}>
-                        Stable Manager.io accounting core
+                        {'Stable\u00A0Manager.io\u00A0accounting\u00A0core'}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                         {[
-                            { icon: '📈', label: 'P&L Statement', status: 'Synced',      color: '#22c55e' },
-                            { icon: '🏦', label: 'Balance Sheet',  status: 'Audit-Ready', color: '#00D2FF' },
-                            { icon: '💸', label: 'Cash Flow',      status: 'Accurate',    color: '#FFD700' },
+                            { icon: '📈', label: 'P&L\u00A0Statement', status: 'Synced',      color: '#22c55e' },
+                            { icon: '🏦', label: 'Balance\u00A0Sheet',  status: 'Audit-Ready', color: '#00D2FF' },
+                            { icon: '💸', label: 'Cash\u00A0Flow',      status: 'Accurate',    color: '#FFD700' },
                         ].map(r => (
                             <div key={r.label} style={{ backgroundColor: '#050a10', border: '1px solid rgba(0,210,255,0.2)', borderRadius: '16px', padding: '28px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 0 16px rgba(0,210,255,0.06)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -344,7 +344,7 @@ export default function UpworkAssetsStudio() {
                             </div>
                         ))}
                     </div>
-                    <p style={{ fontSize: '18px', color: 'rgba(0,210,255,0.6)', marginTop: '32px', border: 'none' }}>0 errors  ·  full reconciliation</p>
+                    <p style={{ fontSize: '18px', color: 'rgba(0,210,255,0.6)', marginTop: '32px', border: 'none' }}>{'0\u00A0errors\u00A0\u00B7\u00A0full\u00A0reconciliation'}</p>
                 </div>
             </div>
         </div>
