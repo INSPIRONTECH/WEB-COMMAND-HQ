@@ -572,7 +572,7 @@ export default function UpworkAssetsStudio() {
                         <div
                             id="data-export-canvas"
                             className="font-institutional"
-                            style={{ width: '1600px', height: '1200px', backgroundColor: '#010409', padding: '64px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.05)' }}
+                            style={{ width: '1600px', height: '1200px', backgroundColor: '#010409', padding: '64px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.05)', wordSpacing: '0.15em' }}
                         >
                             {/* Grid Overlay */}
                             <div style={{
