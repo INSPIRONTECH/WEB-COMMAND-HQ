@@ -12,6 +12,7 @@
     "@next/env": "^15.1.0",
     "chart.js": "^4.5.1",
     "clsx": "^2.1.0",
+    "dom-to-image-more": "^3.7.2",
     "framer-motion": "^11.0.24",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.0",

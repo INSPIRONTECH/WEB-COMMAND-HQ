@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { RefinedLogo, RefinedIcon } from '@/components/Branding/RefinedLogo';
-import { Download, ChevronRight } from 'lucide-react';
+import { Download, ChevronRight, Info } from 'lucide-react';
 
 /* ─── TYPES ─────────────────────────────────────────────────────────────── */
 type ActiveMode = 'uw-hero' | 'uw-before-after' | 'uw-process' | 'uw-pricing';
@@ -145,33 +145,62 @@ export default function UpworkAssetsStudio() {
         return () => window.removeEventListener('resize', calculateScale);
     }, [calculateScale]);
 
-    /* ─── EXPORT ──────────────────────────────────────────────────────────── */
+    /* ─── EXPORT ──────────────────────────────────────────────────────────── 
+       Primary: dom-to-image-more (SVG foreignObject — preserves word spacing)
+       Fallback: html2canvas (if dom-to-image fails)
+       Best: DevTools → Inspect canvas → Capture node screenshot
+       ──────────────────────────────────────────────────────────────────────── */
     const handleExport = async () => {
         setIsExporting(true);
         try {
-            const { default: html2canvas } = await import('html2canvas');
             const el = document.getElementById('data-export-canvas');
             if (!el) return;
 
-            // Hide blur orbs — html2canvas renders CSS blur as solid blobs
+            // Hide blur orbs before capture (both engines render them poorly)
             const orbs = el.querySelectorAll<HTMLElement>('[data-blur-orb]');
             orbs.forEach(o => (o.style.display = 'none'));
 
-            const canvas = await html2canvas(el, {
-                scale: 1,
-                useCORS: true,
-                backgroundColor: '#010409',
-                allowTaint: true,
-                logging: false,
-            });
+            let dataUrl: string | null = null;
+
+            // PRIMARY: dom-to-image-more (SVG foreignObject — correct text rendering)
+            try {
+                const domtoimage = await import('dom-to-image-more');
+                dataUrl = await domtoimage.default.toJpeg(el, {
+                    quality: 0.95,
+                    bgcolor: '#010409',
+                    width: 1600,
+                    height: 1200,
+                    style: {
+                        transform: 'none',
+                        transformOrigin: 'top left',
+                    },
+                });
+            } catch (domErr) {
+                console.warn('dom-to-image failed, falling back to html2canvas:', domErr);
+            }
+
+            // FALLBACK: html2canvas
+            if (!dataUrl) {
+                const { default: html2canvas } = await import('html2canvas');
+                const canvas = await html2canvas(el, {
+                    scale: 1,
+                    useCORS: true,
+                    backgroundColor: '#010409',
+                    allowTaint: true,
+                    logging: false,
+                });
+                dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+            }
 
             // Restore orbs
             orbs.forEach(o => (o.style.display = ''));
 
-            const a = document.createElement('a');
-            a.download = `inspiron_${activeMode}_1x_${Date.now()}.jpg`;
-            a.href = canvas.toDataURL('image/jpeg', 0.95);
-            a.click();
+            if (dataUrl) {
+                const a = document.createElement('a');
+                a.download = `inspiron_${activeMode}_1x_${Date.now()}.jpg`;
+                a.href = dataUrl;
+                a.click();
+            }
         } catch (err) {
             console.error('Export failed:', err);
         } finally {
@@ -506,11 +535,19 @@ export default function UpworkAssetsStudio() {
 
                     {/* System Note */}
                     <div className="mt-6 bg-[#14a800]/10 border border-[#14a800]/30 rounded-lg px-4 py-3 text-[11px] text-[#14a800] font-mono">
-                        &gt;&gt; EXPORT: JPG 0.95q — enforced &lt;10MB Upwork compliance
+                        &gt;&gt; EXPORT: JPG 0.95q — dom-to-image-more (SVG engine)
                         <br />
                         &gt;&gt; CANVAS: 1600×1200px · 4:3 · Blur orbs hidden on export
-                        <br />
-                        &gt;&gt; V2.1: html2canvas word-spacing fix applied
+                    </div>
+
+                    {/* Pro tip */}
+                    <div className="mt-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[11px] text-gray-400">
+                        <div className="flex items-start gap-2">
+                            <Info size={14} className="text-[#00D2FF] mt-0.5 shrink-0" />
+                            <div>
+                                <span className="text-[#00D2FF] font-bold">Cleanest export:</span> Right-click the canvas → Inspect → select the <code className="text-[#FFD700]">#data-export-canvas</code> node → right-click → <span className="text-white">Capture node screenshot</span>. Uses browser&apos;s native renderer — perfect text every time.
+                            </div>
+                        </div>
                     </div>
 
                     {/* Export Button */}
