@@ -29,24 +29,26 @@ export async function POST(req: NextRequest) {
         const message = value?.messages?.[0];
         const contact = value?.contacts?.[0];
 
-        if (message && contact) {
-            const leadPhone = contact.wa_id;
-            const leadName = contact.profile.name || 'Valued Client';
+        if (message) {
+            const leadPhone = message.from || contact?.wa_id;
+            const leadBsuid = message.from_user_id; // BSUID Rollout March 31
+            const leadIdentifier = leadBsuid || leadPhone; // Fallback logic
+            const leadName = contact?.profile?.name || 'Valued Client';
             const leadText = message.text?.body?.toLowerCase() || "";
 
-            console.log(`[INSPIRON SENTRY] Lead Identified: ${leadName} (${leadPhone})`);
+            console.log(`[INSPIRON SENTRY] Lead Identified: ${leadName} (ID: ${leadIdentifier})`);
 
             // Whale Detection Logic
             const isWhale = leadText.includes("audit") || leadText.includes("crore");
 
             if (isWhale) {
                 console.log(`[WHALE DETECTED] Triggering Handshake for ${leadName}`);
-                await sendTemplateResponse(leadPhone, leadName);
+                await sendTemplateResponse(leadIdentifier, leadName);
 
                 // PHASE 4: TRIGGER INTERNAL ALERT TO MD ABU HASAN
                 const MY_PERSONAL_NUMBER = "8801719300849";
                 console.log(`[ALERT] Sending Whale Alert to ${MY_PERSONAL_NUMBER}`);
-                await sendInternalWhaleAlert(MY_PERSONAL_NUMBER, leadName, leadPhone, leadText);
+                await sendInternalWhaleAlert(MY_PERSONAL_NUMBER, leadName, leadIdentifier, leadText);
             }
         }
 
