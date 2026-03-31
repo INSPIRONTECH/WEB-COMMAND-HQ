@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
 }
 
 async function sendTemplateResponse(to: string, name: string) {
-    const phoneId = process.env.PHONE_NUMBER_ID;
+    const phoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
     if (!phoneId) {
         console.error('[WEBHOOK] PHONE_NUMBER_ID env var is not set — cannot send template response');
         return;
@@ -70,7 +70,7 @@ async function sendTemplateResponse(to: string, name: string) {
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`,
+            'Authorization': `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -100,7 +100,7 @@ async function sendTemplateResponse(to: string, name: string) {
 }
 
 async function sendInternalWhaleAlert(to: string, clientName: string, clientPhone: string, text: string) {
-    const phoneId = process.env.PHONE_NUMBER_ID;
+    const phoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
     if (!phoneId) {
         console.error('[WEBHOOK] PHONE_NUMBER_ID env var is not set — cannot send whale alert');
         return;
@@ -110,7 +110,7 @@ async function sendInternalWhaleAlert(to: string, clientName: string, clientPhon
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`,
+            'Authorization': `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({

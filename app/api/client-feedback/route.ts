@@ -1,9 +1,15 @@
 import { NextResponse } from 'next/server';
 import { saveToNotion, notifyWhatsApp } from '@/lib/notifications';
 
-const DATABASE_ID = process.env.NOTION_CLIENT_FEEDBACK_DB_ID!;
-
 export async function POST(request: Request) {
+    const DATABASE_ID = process.env.NOTION_CLIENT_FEEDBACK_DB_ID;
+    if (!DATABASE_ID) {
+        return NextResponse.json(
+            { success: false, error: 'Notion DB not configured' },
+            { status: 503 }
+        );
+    }
+
     try {
         const data = await request.json();
 

@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Swappable via CLAUDE_MODEL env var (n-Law 03: Zero Vendor Lock-in)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const MODEL = process.env.CLAUDE_MODEL ?? "claude-haiku-4-5";
+const MODEL = process.env.CLAUDE_MODEL ?? "claude-haiku-4-5-20251001";
 
 const SYSTEM_PROMPT = `You are an expert ERP proposal assistant for INSPIRON TECH — 
 Bangladesh's only officially listed Manager.io Advisor, based in Dhaka.

@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
     //    (browser GETs never carry custom headers — cookie is the only reliable mechanism)
     if (pathname.startsWith('/audit-vault')) {
         const token = req.cookies.get('audit_token')?.value;
-        if (token !== process.env.AUDIT_TOKEN) {
+        if (!token || !process.env.AUDIT_TOKEN || token !== process.env.AUDIT_TOKEN) {
             return NextResponse.redirect(new URL('/401', req.url));
         }
     }
