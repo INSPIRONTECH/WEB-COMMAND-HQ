@@ -20,29 +20,36 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    console.log('[WhatsApp Webhook] 📥 Payload:', JSON.stringify(body, null, 2)); // n-Law 04 Persistent Audit
+    console.log('[WhatsApp Webhook] 📥 Payload:', JSON.stringify(body, null, 2));
 
     const entry = body.entry?.[0];
     const change = entry?.changes?.[0]?.value;
 
-    // Display name / username / system events
     if (change?.event === 'phone_number_name_update') {
-      console.log(`[Display Name/Username Update] Decision: ${change.decision}`);
+      console.log(`[Display Name/Username] Decision: ${change.decision}`);
     }
 
-    // BSUID-safe message handling (2026 format)
     if (change?.messages) {
       for (const msg of change.messages) {
         const from = msg.from;                    // BSUID or phone
         const userId = msg.user_id || from;       // BSUID primary
-        const text = msg.text?.body || msg.interactive?.button_reply?.title || '';
+        const rawText = msg.text?.body || msg.interactive?.button_reply?.title || '';
+        const text = rawText.toLowerCase();
 
-        console.log(`[Message] BSUID/From: ${from} | UserID: ${userId} | Text: ${text}`);
+        console.log(`[Message] BSUID/From: ${from} | UserID: ${userId} | Text: ${rawText}`);
 
-        // Manager.io CRM schema mapping
-        // contact_bsuid = userId (primary key)
-        // contact_username = extracted if present in message
-        // TODO: upsert to Manager.io with contact_bsuid and contact_username
+        // Whale Detection (restored + expanded)
+        const isWhale = text.includes("audit") || text.includes("crore") || 
+                       text.includes("migrate") || text.includes("vat");
+
+        if (isWhale) {
+          console.log(`[WHALE DETECTED] Triggering handshake for ${userId}`);
+          await sendTemplateResponse(userId, "Valued Client");           // welcome template
+          await sendInternalWhaleAlert("8801719300849", userId, rawText);   // alert to you
+        }
+
+        // Manager.io CRM mapping stub (ready for upsert)
+        // contact_bsuid: userId, contact_username: extracted if present
       }
     }
 
@@ -51,4 +58,42 @@ export async function POST(request: NextRequest) {
     console.error('[WhatsApp Webhook] ❌ Error:', error);
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
   }
+}
+
+async function sendTemplateResponse(to: string, name: string) {
+  const url = `https://graph.facebook.com/v21.0/${PHONE_NUMBER_ID}/messages`;
+  await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      to: to,
+      type: "template",
+      template: {
+        name: "welcome_message__english",
+        language: { code: "en" },
+        components: [{ type: "body", parameters: [{ type: "text", text: name }] }]
+      }
+    }),
+  });
+}
+
+async function sendInternalWhaleAlert(to: string, clientId: string, text: string) {
+  const url = `https://graph.facebook.com/v21.0/${PHONE_NUMBER_ID}/messages`;
+  await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      to: to,
+      type: "text",
+      text: { body: `🚨 WHALE ALERT\nClient: ${clientId}\nQuery: "${text}"\nAction: Engage immediately.` }
+    }),
+  });
 }
