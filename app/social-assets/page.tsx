@@ -761,6 +761,23 @@ export default function SocialAssetsPage() {
 
                     </div>
 
+                        {/* FORUM CONTROLS */}
+                        {(activeMode === 'forum-header' || activeMode === 'forum-card') && (
+                            <div suppressHydrationWarning className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300 px-6 pb-4">
+                                <div className="p-4 bg-electric-cyan/5 border border-electric-cyan/20 rounded text-[10px] text-electric-cyan font-mono uppercase tracking-widest leading-relaxed">
+                                    ✓ Forum Header: 1110 × 300 px<br/>
+                                    ✓ Forum Card: 590 × 300 px<br/>
+                                    ✓ Content is brand-locked — export ready<br/>
+                                    ○ For editable copy, use LinkedIn mode
+                                </div>
+                                <div className="p-3 bg-action-gold/5 border border-action-gold/20 rounded text-[10px] text-action-gold/80 font-mono leading-relaxed">
+                                    &gt;&gt; TIP: Export PNG 2× for forum upload.<br/>
+                                    &gt;&gt; Manager.io Forum profile header: 1110×300<br/>
+                                    &gt;&gt; User card background: 590×300
+                                </div>
+                            </div>
+                        )}
+
                     {/* ─── EXPORT CONFIG PANEL (always visible) ─── */}
                     <div className="p-6 border-t-2 border-white/20 space-y-5">
                         <div className="flex items-center gap-2">
@@ -1108,8 +1125,8 @@ export default function SocialAssetsPage() {
                                         <div className={`${activeMode === 'instagram-profile' ? 'text-[300px]' : 'text-9xl'} font-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none font-institutional ${renderMode === 'light' ? 'text-black/5' : 'text-white/5'}`}>
                                             {profileData.initials}
                                         </div>
-                                        <div className={`${activeMode === 'instagram-profile' ? 'w-96 h-96' : 'w-48 h-48'} rounded-full flex items-center justify-center mb-6 border-2 border-white/10 mx-auto overflow-hidden p-8 bg-gray-800/50 backdrop-blur-sm`}>
-                                            <RefinedIcon size={192} />
+                                        <div className={`${activeMode === 'instagram-profile' ? 'w-80 h-80' : 'w-48 h-48'} rounded-full flex items-center justify-center mb-6 border-2 border-white/10 mx-auto overflow-hidden p-6 bg-gray-800/50 backdrop-blur-sm`}>
+                                            <RefinedIcon size={activeMode === 'instagram-profile' ? 320 : 192} />
                                         </div>
                                         <div className="px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-widest inline-block shadow-[0_0_20px_rgba(255,215,0,0.3)]"
                                             style={{ backgroundColor: '#FFD700', color: '#010409' }}>
@@ -1448,7 +1465,7 @@ export default function SocialAssetsPage() {
                         {/* 5. AUDIT — FIX 3: type weight stress test restored */}
                         {activeMode === 'audit' && (
                             <div style={{ transform: `scale(${scale})` }} className="transition-transform duration-200 ease-out origin-center flex-shrink-0 w-fit">
-                                <div className={`bg-black/80 backdrop-blur ${theme.border} border rounded-2xl p-16 flex flex-col items-center gap-12 relative overflow-hidden`}>
+                                <div data-export-canvas className={`bg-black/80 backdrop-blur ${theme.border} border rounded-2xl p-16 flex flex-col items-center gap-12 relative overflow-hidden`}>
                                     {auditState.grid && (
                                         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00D2FF10_1px,transparent_1px),linear-gradient(to_bottom,#00D2FF10_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none z-0" />
                                     )}
